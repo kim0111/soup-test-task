@@ -42,7 +42,16 @@ services:
   tests:
     <<: *app
     profiles: [test]
-    command: ["pytest", "-q"]
+    command: ["pytest"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:?copy .env.example to .env}:${POSTGRES_PASSWORD:?copy .env.example to .env}@db:5432/${POSTGRES_DB:?copy .env.example to .env}
+      MUTATION: ${MUTATION:-}
+      PYTHONDONTWRITEBYTECODE: "1"
+    # Live code, no rebuild per change. Tests use their own database (see tests/conftest.py).
+    volumes:
+      - ./app:/app/app:ro
+      - ./tests:/app/tests:ro
+      - ./migrations:/app/migrations:ro
 
   chaos:
     <<: *app
