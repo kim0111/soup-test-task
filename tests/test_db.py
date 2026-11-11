@@ -28,3 +28,12 @@ def test_session_is_autocommit_and_named(db_url, role):
         assert show(c, "application_name") == f"{role}-name"
         # dict rows: callers read columns by name
         assert c.execute("SELECT 1 AS one").fetchone() == {"one": 1}
+
+
+def test_pool_sessions_get_the_role_settings(db_url):
+    """The API serves requests from a pool; its sessions need the same timeouts and autocommit."""
+    with db.pool("api", "api-pool", url=db_url) as p, p.connection() as c:
+        assert c.autocommit
+        assert show(c, "statement_timeout") == "5s"
+        assert show(c, "lock_timeout") == "2s"
+        assert show(c, "application_name") == "api-pool"
