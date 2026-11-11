@@ -32,6 +32,7 @@ Raw SQL, no ORM: load → check in Python → save is exactly the read-modify-wr
 `job_effects(job_id, attempt, worker_id)` is the emulated side effect, deliberately without
 `UNIQUE(job_id)`, so a double effect is countable rather than hidden by a constraint.
 `job_transitions` is an audit log written by a trigger in the same transaction as each status change.
+It also logs writes that leave the status unchanged, so a double claim appears as `running → running`.
 
 States: `queued → running → succeeded / failed / cancelled`; `running → queued` only by the reaper
 after lease expiry. Terminal states are never a source state in any statement.
@@ -84,8 +85,11 @@ WITH done AS (
   UPDATE jobs SET status='succeeded', finished_at=now(), lease_expires_at=NULL
    WHERE id=$id AND status='running' AND attempt=$a
   RETURNING id, attempt)
-INSERT INTO job_effects (job_id, attempt, worker_id) SELECT id, attempt, $w FROM done;
+INSERT INTO job_effects (job_id, attempt, worker_id) SELECT id, $a, $w FROM done;
 ```
+
+The effect stores the worker's own token `$a`, so a broken fence shows up as an effect whose attempt
+differs from the job's, instead of silently borrowing the new owner's token.
 
 - **Execution can repeat.** A worker can be killed after doing the work and before committing; the
   job then runs again. Exactly-once *execution* is impossible with crash-prone workers: nothing can

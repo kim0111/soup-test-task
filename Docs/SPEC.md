@@ -1,6 +1,6 @@
 # SPEC — Training-Job Queue (Soup backend take-home)
 
-**Stack:** Python 3.12 (Docker) · FastAPI · psycopg 3 · PostgreSQL 16 · pytest
+**Stack:** Python 3.12 (Docker) · uv (`pyproject.toml` + `uv.lock`) · FastAPI · psycopg 3 · PostgreSQL 16 · pytest
 **Guarantee:** at-least-once *execution*, exactly-once *committed effect* (§6)
 **Task:** `Docs/TASK.pdf` · budget 4–6 h · must start with `docker compose up` · build order: `Docs/PLAN.md`
 
@@ -103,6 +103,8 @@ CREATE TABLE job_effects (
 
 -- Audit, written by an AFTER INSERT OR UPDATE OF status trigger in the same transaction as the
 -- change, so a kill can't separate them. Source for re-executions and the double-claim check.
+-- The trigger has NO `WHEN (OLD.status IS DISTINCT FROM NEW.status)` filter: a double claim
+-- writes running → running, and that row is exactly what I8 must see (M1).
 CREATE TABLE job_transitions (
   seq         bigserial PRIMARY KEY,               -- total order
   job_id      uuid NOT NULL,
@@ -183,9 +185,12 @@ WITH done AS (
    WHERE id=$id AND status='running' AND attempt=$a
   RETURNING id, attempt)
 INSERT INTO job_effects (job_id, attempt, worker_id)
-SELECT id, attempt, $w FROM done;
+SELECT id, $a, $w FROM done;
 -- 0 rows inserted → cancelled or lease lost; nothing written
 ```
+The effect records the **worker's** token `$a`, not the row's `attempt`. They are equal whenever the
+fence holds; if it is broken (M2), a zombie's effect carries its stale token and I6 sees the mismatch.
+Taking `attempt` from `RETURNING` would copy the new owner's token and hide the bug.
 `fail=true` → the same fenced `UPDATE` to `failed` with an error, no effect.
 
 **Reaper** (every worker, every second):
@@ -255,19 +260,22 @@ acknowledged cancel that was undone). Each prints PASS/FAIL, counts and example 
 
 | ID | Invariant |
 |---|---|
-| I1 | No lost job: every key with a 2xx has exactly one row; each uncancelled one ended as its payload asks (`fail=false` → `succeeded`) |
+| I1 | No lost job: every key with a 2xx has exactly one row; each uncancelled one ended as its payload asks (`fail=false` → `succeeded`, `fail=true` → `failed`). Exception: `failed` with `attempts exhausted` is legal when `job_transitions` shows exactly `max_attempts` claims, each ended by a reaper requeue/fail; these are counted in the report, not failed |
 | I2 | No duplicates: all 2xx for a key returned the same id; a different body got 409 |
 | I3 | None stuck: no `queued`/`running` rows after the drain |
 | I4 | ≤ 1 effect per job |
 | I5 | `succeeded` ⇔ exactly one effect |
 | I6 | The effect's `attempt` = the job's final `attempt` |
 | I7 | Cancel respected: cancel answered 200 ⇒ final `cancelled`; final `cancelled` ⇒ a cancel was sent |
-| I8 | Legal history: every `job_transitions` edge is in §3; claims per job are attempts 1..n, and each claim k > 1 follows a reaper requeue (no double claim) |
+| I8 | Legal history: every `job_transitions` edge is in §3 (so `running → running` is a FAIL); claims per job are attempts 1..n, and each claim k > 1 follows a reaper requeue (no double claim) |
 
 ### 8.3 Report and runs
 Per run (stdout + JSON, raw and unedited, in `results/chaos/`; every run incl. failed ones listed in
 `results/chaos/INDEX.md`): seed, wall time, kills, **kills that hit a busy worker**, re-executions,
-cancels by from-status, 409s, invariant results.
+jobs failed by exhausted attempts, cancels by from-status, 409s, invariant results.
+
+Exhausted attempts are expected occasionally: a 2–5 s job is killed on roughly 30 % of attempts, so
+0.3⁵ × ~500 long jobs ≈ 1 per run. Many more than that points to a lease or heartbeat bug.
 
 | Run | Count | Expected |
 |---|---|---|
@@ -284,7 +292,7 @@ A harness that can't fail on a broken implementation proves nothing.
 | ID | Break | Must fail |
 |---|---|---|
 | M1 | Claim = plain `SELECT … LIMIT 1`, then `UPDATE … WHERE id=$1` (no lock, no status check) | I8 + `test_concurrent_claims` |
-| M2 | No `attempt` check in heartbeat and complete (run with `--zombie`) | I6 + `test_zombie_cannot_complete` |
+| M2 | No `attempt` check in heartbeat and complete (run with `--zombie`); the effect still records `$a` | I6 + `test_zombie_cannot_complete` |
 | M3 | Complete without `status='running'` | I7 + `test_cancel_complete_race` |
 | M4 | Create via SELECT-then-INSERT, unique index dropped | I2 + `test_idempotent_create` |
 

@@ -1,4 +1,7 @@
 .venv/
 .claude/
+__pycache__/
+.pytest_cache/
 Docs/NOTES.md
 Docs/PLAN.md
+.env
