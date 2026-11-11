@@ -1,6 +1,7 @@
 """Tests run against a real Postgres, in a dedicated database rebuilt from migrations/ each session."""
 
 import os
+from contextlib import ExitStack
 from pathlib import Path
 
 import psycopg
@@ -34,3 +35,12 @@ def conn(db_url):
     with db.connect("worker", "pytest", url=db_url) as c:
         c.execute("TRUNCATE jobs, job_effects, job_transitions RESTART IDENTITY")
         yield c
+
+
+@pytest.fixture
+def connect(db_url):
+    """Open extra sessions, one per simulated process; all closed (open work rolled back) at teardown."""
+    with ExitStack() as stack:
+        def _connect(role: db.Role = "worker", name: str = "race"):
+            return stack.enter_context(db.connect(role, name, url=db_url))
+        yield _connect

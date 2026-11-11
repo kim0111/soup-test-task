@@ -11,24 +11,14 @@ Each test names the deliberate break (SPEC §8.4) that must make it fail.
 import time
 from collections import Counter
 from concurrent.futures import Future, ThreadPoolExecutor
-from contextlib import ExitStack
 from threading import Barrier
 
 import pytest
 
-from app import db, repo
+from app import repo
 from tests.helpers import PAYLOAD, effects, expire_lease, new_job, row, transitions
 
 THREADS = 50
-
-
-@pytest.fixture
-def connect(db_url):
-    """Open extra sessions, one per simulated process; all closed (open work rolled back) at teardown."""
-    with ExitStack() as stack:
-        def _connect(role: db.Role = "worker", name: str = "race"):
-            return stack.enter_context(db.connect(role, name, url=db_url))
-        yield _connect
 
 
 @pytest.fixture

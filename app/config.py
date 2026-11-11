@@ -10,6 +10,14 @@ REAP_SECONDS = 1.0
 MAX_ATTEMPTS = 5
 REAP_BATCH = 500
 
+# Worker loop. A job "runs" by sleeping in chunks; heartbeat and reap are checked between chunks.
+CHUNK_SECONDS = 0.1
+# Empty queue: jittered backoff from IDLE_MIN to IDLE_MAX, reset by a claim.
+IDLE_MIN_SECONDS = 0.1
+IDLE_MAX_SECONDS = 0.5
+# Lost DB connection: jittered backoff up to this, retried forever.
+RECONNECT_MAX_SECONDS = 2.0
+
 # API connection pool. Requests beyond POOL_MAX wait up to POOL_TIMEOUT_SECONDS, then get a 503.
 POOL_MIN = 2
 POOL_MAX = 20

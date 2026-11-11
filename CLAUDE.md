@@ -13,9 +13,11 @@ The goal is to prove it **survives production** (crashes, zombies, races), not j
 - `Docs/PLAN.md` (build order, phase checklist) and `Docs/NOTES.md` (journal used later for `AI_USAGE.md`) are
   **gitignored, local only**. Check PLAN.md for the current phase; record surprises, rejected/accepted AI
   suggestions and failed runs in NOTES.md.
-- Done (PLAN Phases 0–4): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API.
-  Not built yet (per SPEC §11): the worker loop (`app/worker.py` is still the Phase 1 stub), the `MUTATION`
-  branches in `repo.py`, `chaos/`, `loadtest/`, `results/`, and the remaining docs.
+- Done (PLAN Phases 0–5): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API, worker loop
+  (`app/worker.py`: `run_job`, `run`, `Timings`; tests in `tests/test_worker.py`).
+  Not built yet (per SPEC §11): the `MUTATION` branches in `repo.py`, `chaos/`, `loadtest/`, `results/`,
+  and the remaining docs.
+
 
 ## Commands
 
@@ -86,6 +88,10 @@ Schema details that are deliberate, not oversights (`migrations/001_init.sql`):
   Keep such holds short or raise `idle_in_transaction_session_timeout` on the holder: the server kills it at 2 s.
 - API tests use `TestClient(api.create_app(db_url))`; anything about concurrency runs a real uvicorn in a thread
   (`server` fixture in `test_api.py`), since TestClient doesn't reproduce FastAPI's threadpool behavior.
+- Worker tests pass short `worker.Timings` (lease 0.5 s, heartbeat 0.1 s) and drive `run_job` directly, the
+  loop via `worker.run` in a thread (`loop` fixture), and signals via a real `python -m app.worker` subprocess.
+  Before acting on a "running" job, wait for a heartbeat (lease moved), or a no-op `run_job` passes.
+  `connect` (extra sessions) lives in `conftest.py`.
 - A test that passes before the code exists is a finding: prove each guard by breaking it by hand and watching
   the named test fail with an assertion (not an error), then revert.
 - Mutations (SPEC §8.4) are implemented as one `if config.MUTATION == "Mx"` per query in `repo.py`; each must
