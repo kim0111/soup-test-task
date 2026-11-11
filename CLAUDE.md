@@ -13,8 +13,9 @@ The goal is to prove it **survives production** (crashes, zombies, races), not j
 - `Docs/PLAN.md` (build order, phase checklist) and `Docs/NOTES.md` (journal used later for `AI_USAGE.md`) are
   **gitignored, local only**. Check PLAN.md for the current phase; record surprises, rejected/accepted AI
   suggestions and failed runs in NOTES.md.
-- Not built yet (per SPEC §11): `chaos/`, `loadtest/`, `results/`, `tests/test_api.py`, `tests/test_races.py`,
-  the worker loop, the API endpoints, and the `MUTATION` branches in `repo.py`.
+- Done (PLAN Phases 0–4): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API.
+  Not built yet (per SPEC §11): the worker loop (`app/worker.py` is still the Phase 1 stub), the `MUTATION`
+  branches in `repo.py`, `chaos/`, `loadtest/`, `results/`, and the remaining docs.
 
 ## Commands
 
@@ -25,10 +26,14 @@ Requires `.env` (copy `.env.example`); compose refuses to start without it.
 docker compose up --build                                   # db + api (:8000) + 4 workers
 docker compose --profile test run --rm tests                # full test suite
 docker compose --profile test run --rm tests pytest tests/test_repo.py::TestClaim::test_empty_queue_returns_none
-MUTATION=M1 docker compose --profile test run --rm tests    # run tests against a deliberate bug
+MUTATION=M1 docker compose --profile test run --rm tests    # run tests against a deliberate bug (bash)
 docker compose stop workers && docker compose --profile chaos run --rm chaos --seed 1 [--zombie]
 docker compose --profile load run --rm load
 ```
+
+The host shell is PowerShell: `VAR=x cmd` and `&&` don't work there. Use
+`$env:MUTATION="M1"; docker compose --profile test run --rm tests` (then `Remove-Item Env:MUTATION`),
+or pass it into the container: `docker compose --profile test run --rm -e MUTATION=M1 tests`.
 
 - The `tests` service bind-mounts `app/`, `tests/`, `migrations/`: code changes need no rebuild; dependency
   changes (`pyproject.toml`/`uv.lock`) do (`docker compose build`). The Docker build uses `uv sync --locked`,
@@ -57,6 +62,11 @@ correctness depends on them; don't break them when adding code):
 - **Reaper** (every worker, every second) requeues expired leases, or fails the job after `MAX_ATTEMPTS`.
   Cancel of a running job is immediate; the worker discovers it via a 0-row heartbeat/complete.
 - Terminal states (`succeeded`/`failed`/`cancelled`) are never named as a source state in any statement.
+- **API (`app/api.py`)**: `create_app(url)` factory, psycopg pool opened in the lifespan. Every input is
+  validated before SQL; all validation errors are **400** (SPEC §4), not FastAPI's 422. `psycopg.OperationalError`
+  and `PoolTimeout` → 503 + `Retry-After: 1`. Take the pooled connection **inside each route**
+  (`with conn(request) as c:`), never in a sync `Depends`: FastAPI runs a dependency and the endpoint as separate
+  threadpool jobs, which deadlocks against the pool under bursts and turns bad input into 503 when the DB is down.
 
 Schema details that are deliberate, not oversights (`migrations/001_init.sql`):
 - `job_effects` has **no** `UNIQUE(job_id)`: a fencing bug must show as a countable duplicate (invariants I4–I6).
@@ -70,7 +80,14 @@ Schema details that are deliberate, not oversights (`migrations/001_init.sql`):
 
 - Always against real Postgres, never mocks or SQLite (SKIP LOCKED, lock-wait re-checks, ON CONFLICT).
 - `tests/helpers.py` drives states directly (`expire_lease`, `reclaimed`, `effects`, `transitions`) and is
-  shared by `test_repo.py` and the future race tests.
+  shared by `test_repo.py` and `test_races.py`.
+- Race tests force interleavings instead of sleeping: one session holds an uncommitted statement in
+  `with conn.transaction():`, and the test polls `pg_stat_activity` until the other session waits on a `Lock`.
+  Keep such holds short or raise `idle_in_transaction_session_timeout` on the holder: the server kills it at 2 s.
+- API tests use `TestClient(api.create_app(db_url))`; anything about concurrency runs a real uvicorn in a thread
+  (`server` fixture in `test_api.py`), since TestClient doesn't reproduce FastAPI's threadpool behavior.
+- A test that passes before the code exists is a finding: prove each guard by breaking it by hand and watching
+  the named test fail with an assertion (not an error), then revert.
 - Mutations (SPEC §8.4) are implemented as one `if config.MUTATION == "Mx"` per query in `repo.py`; each must
   make its named test and chaos invariant fail. A mutation that isn't caught is a harness finding, reported as is.
 - Never edit chaos/load results; every run, including failed ones, goes into `results/chaos/INDEX.md`.
