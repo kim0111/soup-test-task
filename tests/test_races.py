@@ -76,8 +76,11 @@ def test_concurrent_claims(conn, connect, pool):
     conns = [connect(name=f"w{i}") for i in range(THREADS)]
 
     def drain(i, c):
+        # Bounded: a claim that ignores status would never return None and hang the suite.
         mine = []
-        while (job := repo.claim(c, f"w{i}")) is not None:
+        for _ in range(len(jobs) + 1):
+            if (job := repo.claim(c, f"w{i}")) is None:
+                break
             mine.append((job["id"], job["attempt"]))
         return mine
 
