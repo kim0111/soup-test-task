@@ -54,13 +54,17 @@ services:
       - ./app:/app/app:ro
       - ./tests:/app/tests:ro
       - ./migrations:/app/migrations:ro
+      - ./chaos:/app/chaos:ro
 
   chaos:
     <<: *app
     profiles: [chaos]
     entrypoint: ["python", "-m", "chaos.harness"]
+    # Live code (the harness runs its own API and workers from it); .git only to record the commit.
     volumes:
+      - ./app:/app/app:ro
       - ./chaos:/app/chaos:ro
+      - ./.git:/app/.git:ro
       - ./results:/app/results
 
   load:

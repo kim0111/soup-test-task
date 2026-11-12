@@ -13,9 +13,10 @@ The goal is to prove it **survives production** (crashes, zombies, races), not j
 - `Docs/PLAN.md` (build order, phase checklist) and `Docs/NOTES.md` (journal used later for `AI_USAGE.md`) are
   **gitignored, local only**. Check PLAN.md for the current phase; record surprises, rejected/accepted AI
   suggestions and failed runs in NOTES.md.
-- Done (PLAN Phases 0–6): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API, worker loop
-  (`app/worker.py`: `run_job`, `run`, `Timings`; tests in `tests/test_worker.py`), `MUTATION` M1–M4 switches.
-  Not built yet (per SPEC §11): `chaos/`, `loadtest/`, `results/`, and the remaining docs.
+- Done (PLAN Phases 0–7): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API, worker loop
+  (`app/worker.py`: `run_job`, `run`, `Timings`; tests in `tests/test_worker.py`), `MUTATION` M1–M4 switches,
+  chaos harness (`chaos/invariants.py` I1–I8, tested in `tests/test_invariants.py`; `chaos/harness.py`).
+  Not built yet (per SPEC §11): `loadtest/`, the Phase 8 run matrix, and the remaining docs.
 
 
 ## Commands
@@ -28,7 +29,8 @@ docker compose up --build                                   # db + api (:8000) +
 docker compose --profile test run --rm tests                # full test suite
 docker compose --profile test run --rm tests pytest tests/test_repo.py::TestClaim::test_empty_queue_returns_none
 MUTATION=M1 docker compose --profile test run --rm tests    # run tests against a deliberate bug (bash)
-docker compose stop workers && docker compose --profile chaos run --rm chaos --seed 1 [--zombie]
+docker compose stop workers && docker compose --profile chaos run --rm chaos --seed 1 [--zombie] [--jobs 1000]
+docker compose --profile chaos run --rm -e MUTATION=M2 chaos --seed 1 --zombie   # mutation run
 docker compose --profile load run --rm load
 ```
 
@@ -43,6 +45,10 @@ or pass it into the container: `docker compose --profile test run --rm -e MUTATI
 - Tests use a separate `<POSTGRES_DB>_test` database dropped and rebuilt from `migrations/` once per session
   (`tests/conftest.py`); the `conn` fixture truncates all tables per test.
 - `MUTATION` must be empty or `M1`..`M4`; anything else raises at import (`app/config.py`).
+- The chaos harness starts **its own** API (uvicorn) and 8 workers inside the chaos container, so all run the
+  same code and `MUTATION`; it refuses to start while compose workers are connected. A full run is ~5 min
+  (10k keys at 40/s); `--jobs 1000` takes ~40 s. Output goes to `results/chaos/<run>/`, and the harness itself
+  appends every run (PASS, FAIL, debug) to `results/chaos/INDEX.md`; only the notes column is edited by hand.
 
 ## Architecture
 
