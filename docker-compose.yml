@@ -55,6 +55,7 @@ services:
       - ./tests:/app/tests:ro
       - ./migrations:/app/migrations:ro
       - ./chaos:/app/chaos:ro
+      - ./loadtest:/app/loadtest:ro
 
   chaos:
     <<: *app
@@ -71,6 +72,17 @@ services:
     <<: *app
     profiles: [load]
     entrypoint: ["python", "-m", "loadtest.load"]
+    # Load hits the compose `api`; workers are spawned (and kill -9'd) by the load test itself,
+    # since compose workers have no restart policy. `app/` is NOT mounted: load, its workers and
+    # `api` all run the image's code, so the code hash in the header is what the API serves
+    # (`docker compose up -d --build db api` first). chaos/ for the invariants, .git for the commit.
+    depends_on:
+      db:
+        condition: service_healthy
+      api:
+        condition: service_started
     volumes:
       - ./loadtest:/app/loadtest:ro
+      - ./chaos:/app/chaos:ro
+      - ./.git:/app/.git:ro
       - ./results:/app/results
