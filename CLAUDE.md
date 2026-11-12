@@ -40,7 +40,8 @@ docker compose --profile load run --rm load --mix short --seed 1   # L1 verdict 
 
 - The load test hits the compose `api` and spawns (and `kill -9`s) its own 4 workers; it does not mount
   `app/`, so it runs the image's code. Its code hash is computed in the load container, not the api:
-  before trusting a run, check `docker inspect soup-api-1` (image = `soup-queue`, `MUTATION` empty).
+  before trusting a run, check `docker inspect $(docker compose ps -q api)` (image = `soup-queue`, `MUTATION`
+  empty; README "Load" has the full check). Container names follow the folder name, so don't hardcode `soup-api-1`.
   ~6 min for L1, ~7 min for L2 (backlog drain). Output: `results/load/<run>/`, row in `results/load/INDEX.md`.
 
 The host shell is PowerShell: `VAR=x cmd` and `&&` don't work there. Use
