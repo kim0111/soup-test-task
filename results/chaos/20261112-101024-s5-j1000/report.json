@@ -1,0 +1,120 @@
+{
+  "run": "20261112-101024-s5-j1000",
+  "seed": 5,
+  "mutation": null,
+  "zombie": false,
+  "jobs": 1000,
+  "workers": 8,
+  "rate": 40.0,
+  "commit": "91c8b1aed3e9014ee33419b2ebe0c73ef753e245",
+  "code": "30c76023c67a",
+  "isolation": "read committed",
+  "config": {
+    "lease_s": 5.0,
+    "heartbeat_s": 1.0,
+    "reap_s": 1.0,
+    "max_attempts": 5
+  },
+  "wall_s": 34.289,
+  "drained": true,
+  "drain_s": 3.0,
+  "requests": {
+    "cancel 200": 53,
+    "cancel 409": 47,
+    "create 200": 1008,
+    "create 201": 1000,
+    "create 409": 10
+  },
+  "final_status": {
+    "succeeded": 912,
+    "failed": 35,
+    "cancelled": 53
+  },
+  "kills": 14,
+  "kills_busy": 14,
+  "zombies": 0,
+  "zombies_holding_job": 0,
+  "zombie_chances": 0,
+  "re_executions": 14,
+  "exhausted": 0,
+  "cancels_by_from": {
+    "running": 38,
+    "queued": 15
+  },
+  "conflicts_409": 10,
+  "harness_errors": 0,
+  "unexpected_answers": [],
+  "coverage_gaps": [],
+  "invariants": [
+    {
+      "id": "I1",
+      "title": "no lost job",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {
+        "checked": 1000,
+        "exhausted": 0
+      }
+    },
+    {
+      "id": "I2",
+      "title": "no duplicates",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {
+        "keys": 1000
+      }
+    },
+    {
+      "id": "I3",
+      "title": "none stuck",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I4",
+      "title": "at most one effect per job",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I5",
+      "title": "succeeded <=> exactly one effect",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I6",
+      "title": "effect attempt = final attempt",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I7",
+      "title": "cancel respected",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I8",
+      "title": "legal history, no double claim",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    }
+  ],
+  "verdict": "PASS"
+}

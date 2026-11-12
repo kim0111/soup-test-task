@@ -49,6 +49,8 @@ or pass it into the container: `docker compose --profile test run --rm -e MUTATI
   same code and `MUTATION`; it refuses to start while compose workers are connected. A full run is ~5 min
   (10k keys at 40/s); `--jobs 1000` takes ~40 s. Output goes to `results/chaos/<run>/`, and the harness itself
   appends every run (PASS, FAIL, debug) to `results/chaos/INDEX.md`; only the notes column is edited by hand.
+  At the end of a run the raw logs are gzipped (lossless, ~1 MB per full run): read `client.jsonl.gz` and
+  `workers/*.log.gz` with `zcat` / `zgrep`. Runs before 2026-11-12 10:10 are uncompressed.
 
 ## Architecture
 

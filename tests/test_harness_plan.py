@@ -103,3 +103,32 @@ def test_a_run_that_exercised_nothing_is_incomplete():
 
 def test_one_unacknowledged_key_in_a_hundred_is_tolerated():
     assert gates(**numbers(checked=99)) == ([], [])
+
+
+# --- raw logs are kept, compressed (lossless) ----------------------------------------------------
+
+import gzip  # noqa: E402
+
+from chaos.harness import compress_logs  # noqa: E402
+
+
+def test_raw_logs_are_gzipped_byte_for_byte_and_reports_stay_plain(tmp_path):
+    raw = {
+        "client.jsonl": b'{"op": "create", "status": 201}\n' * 100,
+        "workers/w0-g0.log": b"claimed job=x attempt=1\n" * 100,
+        "workers/w1-g3.log": b"",
+    }
+    plain = {"report.txt": b"verdict PASS\n", "report.json": b"{}", "harness.log": b"header\n"}
+    (tmp_path / "workers").mkdir()
+    for name, data in {**raw, **plain}.items():
+        (tmp_path / name).write_bytes(data)
+
+    compress_logs(tmp_path)
+
+    for name, data in raw.items():
+        assert not (tmp_path / name).exists()
+        assert gzip.decompress((tmp_path / f"{name}.gz").read_bytes()) == data
+    for name, data in plain.items():
+        assert (tmp_path / name).read_bytes() == data
+    assert sorted(p.name for p in tmp_path.rglob("*.gz")) == [
+        "client.jsonl.gz", "w0-g0.log.gz", "w1-g3.log.gz"]

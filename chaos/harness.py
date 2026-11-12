@@ -16,12 +16,14 @@ The workload is a pure function of --seed (make_plan). The actors' choices come 
 from the seed, but which keys/workers exist at a given moment depends on timing, so two runs with
 one seed are similar, not identical.
 
-Output in results/chaos/<run>/: report.txt (= stdout) and report.json, client.jsonl (every HTTP
-answer, the invariants' input), harness.log, api.log, workers/*.log. Every run, PASS or FAIL, adds
-a row to results/chaos/INDEX.md. Results are never edited afterwards.
+Output in results/chaos/<run>/: report.txt (= stdout) and report.json, harness.log, api.log, and
+the raw logs gzipped at the end (lossless): client.jsonl.gz (every HTTP answer, the invariants'
+input) and workers/*.log.gz. Read them with `zcat` / `zgrep`. Every run, PASS or FAIL, adds a row
+to results/chaos/INDEX.md. Results are never edited afterwards.
 """
 
 import argparse
+import gzip
 import hashlib
 import json
 import os
@@ -151,6 +153,15 @@ def code_hash() -> str:
                      *ROOT.glob("migrations/*.sql")]):
         h.update(f.relative_to(ROOT).as_posix().encode() + b"\0" + f.read_bytes() + b"\0")
     return h.hexdigest()[:12]
+
+
+def compress_logs(run_dir: Path) -> None:
+    """gzip the bulky raw logs in place (lossless; ~7× smaller, ~1 MB per full run in git).
+    Reports and harness.log stay plain text. Called once the run is over and nothing reads them."""
+    for f in [run_dir / "client.jsonl", *sorted((run_dir / "workers").glob("*.log"))]:
+        if f.exists():
+            f.with_name(f.name + ".gz").write_bytes(gzip.compress(f.read_bytes(), mtime=0))
+            f.unlink()
 
 
 EXPECTED = {"create": {200, 201, 409, 503, None}, "cancel": {200, 409, 503, None}}
@@ -603,6 +614,8 @@ class Run:
         print(text, flush=True)
         (self.dir / "report.txt").write_text(text + "\n", encoding="utf-8")
         self.index_row(rep, results)
+        self.clog.close()
+        compress_logs(self.dir)
         return 0 if verdict == "PASS" else 1
 
     def index_row(self, rep: dict, results: list[invariants.Result]) -> None:
@@ -639,6 +652,11 @@ class Run:
             f"| {type(exc).__name__} (see harness.log) | {self.now():.0f} | {len(self.kills)} | | | "
             f"| {code_hash()} |"
         )
+        try:  # best effort: the row above is what must survive a crash
+            self.clog.close()
+            compress_logs(self.dir)
+        except Exception as e:
+            self.say(f"compress_logs failed: {e!r}")
 
     def append_index(self, row: str) -> None:
         with (RESULTS / "INDEX.md").open("a", encoding="utf-8") as f:
