@@ -1,0 +1,20 @@
+[    0.06] header {"run": "20261112-130632-s1-j1000", "seed": 1, "mutation": null, "zombie": false, "jobs": 1000, "workers": 8, "rate": 40.0, "commit": "51d90d4f07f3ee50c920966864c4269c8ca8e617", "code": "c5f8814a2d31", "isolation": "read committed", "config": {"lease_s": 5.0, "heartbeat_s": 1.0, "reap_s": 1.0, "max_attempts": 5}}
+[    1.91] kill w7 worker-14aa65eed8ac-20 holding 08338ec4-2b04-4bd0-8434-16b292f76b39 a=1
+[    3.55] kill w7 worker-14aa65eed8ac-30 holding 2513df14-8db3-4354-a0fb-cb7e11e3d30b a=1
+[    5.85] kill w5 worker-14aa65eed8ac-18 holding ac8dfb5c-d68c-4249-987b-1efeddeb9ad0 a=1
+[    8.26] kill w6 worker-14aa65eed8ac-19 holding 1fb02c76-4e0c-4fbf-959f-c980f2dbb501 a=1
+[   10.32] kill w3 worker-14aa65eed8ac-16 holding 5bc82aa3-9603-4b60-a69b-17fdf52a74d5 a=1
+[   12.17] kill w6 worker-14aa65eed8ac-41 holding 31cab21c-fe9a-457b-a8e5-f14746b1305c a=1
+[   14.13] kill w2 worker-14aa65eed8ac-15 holding b7fbf2f4-babc-4065-9926-dfc4c7837343 a=1
+[   15.87] kill w2 worker-14aa65eed8ac-47 holding 5bc82aa3-9603-4b60-a69b-17fdf52a74d5 a=2
+[   17.61] kill w7 worker-14aa65eed8ac-35 holding 7ca85b66-1c0d-49f1-b0cf-bf2a24409559 a=1
+[   19.36] kill w5 worker-14aa65eed8ac-40 holding 143c29c7-facb-4e5d-86fc-99920bb58f52 a=1
+[   21.40] kill w5 worker-14aa65eed8ac-51 holding 96ae401b-5708-410f-8507-2d5964e84e7a a=1
+[   23.40] kill w1 worker-14aa65eed8ac-14 holding b8dda6c9-774f-4f34-af83-09000cf8df68 a=1
+[   25.89] kill w1 worker-14aa65eed8ac-54 holding faada40e-2607-49d6-a3a7-de0a51d5e18a a=1
+[   28.23] kill w6 worker-14aa65eed8ac-46 holding a9f8bceb-6b7d-49ea-bc4d-627740975f73 a=1
+[   29.37] submitter done: 2017 POSTs for 1000 keys
+[   29.49] canceller done: 100 keys cancelled
+[   29.96] kill w1 worker-14aa65eed8ac-55 holding 2e6eaa40-1bfa-4507-9ae1-a8ebbc6b68d5 a=1
+[   31.50] chaos stopped: 15 kills, 0 zombies
+[   35.51] drain: done in 4.0s {'queued': 0, 'running': 0}
