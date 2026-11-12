@@ -1,0 +1,8 @@
+{"t": 0.014, "n_live_tup": 0, "n_dead_tup": 0, "n_tup_ins": 112135, "n_tup_upd": 231722, "n_tup_hot_upd": 1, "autovacuum_count": 66, "autoanalyze_count": 68, "heap_bytes": 0, "total_bytes": 49152}
+{"t": 10.016, "n_live_tup": 220, "n_dead_tup": 256, "n_tup_ins": 112346, "n_tup_upd": 232141, "n_tup_hot_upd": 1, "autovacuum_count": 67, "autoanalyze_count": 69, "heap_bytes": 90112, "total_bytes": 229376}
+{"t": 20.019, "n_live_tup": 442, "n_dead_tup": 707, "n_tup_ins": 112568, "n_tup_upd": 232592, "n_tup_hot_upd": 1, "autovacuum_count": 67, "autoanalyze_count": 69, "heap_bytes": 147456, "total_bytes": 344064}
+{"t": 30.025, "n_live_tup": 674, "n_dead_tup": 1166, "n_tup_ins": 112800, "n_tup_upd": 233051, "n_tup_hot_upd": 1, "autovacuum_count": 67, "autoanalyze_count": 69, "heap_bytes": 212992, "total_bytes": 442368}
+{"t": 40.028, "n_live_tup": 897, "n_dead_tup": 1605, "n_tup_ins": 113023, "n_tup_upd": 233490, "n_tup_hot_upd": 1, "autovacuum_count": 67, "autoanalyze_count": 69, "heap_bytes": 270336, "total_bytes": 524288}
+{"t": 50.029, "n_live_tup": 1130, "n_dead_tup": 2082, "n_tup_ins": 113256, "n_tup_upd": 233967, "n_tup_hot_upd": 1, "autovacuum_count": 67, "autoanalyze_count": 69, "heap_bytes": 360448, "total_bytes": 647168}
+{"t": 60.031, "n_live_tup": 1333, "n_dead_tup": 2502, "n_tup_ins": 113459, "n_tup_upd": 234387, "n_tup_hot_upd": 1, "autovacuum_count": 67, "autoanalyze_count": 69, "heap_bytes": 425984, "total_bytes": 745472}
+{"t": 62.088, "n_live_tup": 1333, "n_dead_tup": 2527, "n_tup_ins": 113459, "n_tup_upd": 234412, "n_tup_hot_upd": 1, "autovacuum_count": 67, "autoanalyze_count": 69, "heap_bytes": 425984, "total_bytes": 745472}

@@ -13,10 +13,13 @@ The goal is to prove it **survives production** (crashes, zombies, races), not j
 - `Docs/PLAN.md` (build order, phase checklist) and `Docs/NOTES.md` (journal used later for `AI_USAGE.md`) are
   **gitignored, local only**. Check PLAN.md for the current phase; record surprises, rejected/accepted AI
   suggestions and failed runs in NOTES.md.
-- Done (PLAN Phases 0–7): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API, worker loop
+- Done (PLAN Phases 0–9): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API, worker loop
   (`app/worker.py`: `run_job`, `run`, `Timings`; tests in `tests/test_worker.py`), `MUTATION` M1–M4 switches,
-  chaos harness (`chaos/invariants.py` I1–I8, tested in `tests/test_invariants.py`; `chaos/harness.py`).
-  Not built yet (per SPEC §11): `loadtest/`, the Phase 8 run matrix, and the remaining docs.
+  chaos harness (`chaos/invariants.py` I1–I8, tested in `tests/test_invariants.py`; `chaos/harness.py`),
+  the Phase 8 run matrix (`results/chaos/INDEX.md`, `Docs/SILENT_FAILURES.md`), the load test
+  (`loadtest/load.py`, tested in `tests/test_load_plan.py`; runs in `results/load/INDEX.md`) and
+  `Docs/VERDICT.md` (criteria committed before the runs, then the decision).
+  Not built yet: the Phase 10 docs (README, AI_USAGE, "surprised / concerns").
 
 
 ## Commands
@@ -31,8 +34,14 @@ docker compose --profile test run --rm tests pytest tests/test_repo.py::TestClai
 MUTATION=M1 docker compose --profile test run --rm tests    # run tests against a deliberate bug (bash)
 docker compose stop workers && docker compose --profile chaos run --rm chaos --seed 1 [--zombie] [--jobs 1000]
 docker compose --profile chaos run --rm -e MUTATION=M2 chaos --seed 1 --zombie   # mutation run
-docker compose --profile load run --rm load
+docker compose up -d --build db api; docker compose stop workers   # before a load run
+docker compose --profile load run --rm load --mix short --seed 1   # L1 verdict run; --mix chaos = L2 probe
 ```
+
+- The load test hits the compose `api` and spawns (and `kill -9`s) its own 4 workers; it does not mount
+  `app/`, so it runs the image's code. Its code hash is computed in the load container, not the api:
+  before trusting a run, check `docker inspect soup-api-1` (image = `soup-queue`, `MUTATION` empty).
+  ~6 min for L1, ~7 min for L2 (backlog drain). Output: `results/load/<run>/`, row in `results/load/INDEX.md`.
 
 The host shell is PowerShell: `VAR=x cmd` and `&&` don't work there. Use
 `$env:MUTATION="M1"; docker compose --profile test run --rm tests` (then `Remove-Item Env:MUTATION`),

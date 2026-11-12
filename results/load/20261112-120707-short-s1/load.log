@@ -1,0 +1,77 @@
+[    0.10] header {"run": "20261112-120707-short-s1", "mix": "short", "seed": 1, "rps": 100, "duration_s": 300.0, "role": "verdict (L1)", "workers": 4, "kill_every_s": [3.0, 5.0], "api": "http://api:8000", "commit": "fd8ea5f03cf3f6c6138ff8655bdbf1adb804ea9e", "code": "30c76023c67a", "isolation": "read committed", "warmup_s": 30.0, "timeout_s": 2.0, "config": {"lease_s": 5.0, "heartbeat_s": 1.0, "reap_s": 1.0, "max_attempts": 5, "api_pool_max": 20}}
+[    3.79] kill w3 worker-bfce6f32685d-10 holding 4a9f271d-398e-4994-bc00-e42d3b251360 a=1
+[    7.06] kill w3 worker-bfce6f32685d-14 holding 21e3bed4-de69-443f-9a41-169d53eb31ff a=1
+[   11.65] kill w2 worker-bfce6f32685d-9 holding 7217c566-31e7-4d63-93c3-5d5e3aa628e9 a=1
+[   16.45] kill w3 worker-bfce6f32685d-15 idle
+[   20.56] kill w1 worker-bfce6f32685d-8 holding e1ca56d2-487d-4e2f-aee8-227bed0b2d01 a=1
+[   24.24] kill w3 worker-bfce6f32685d-17 holding 941d96fd-b23d-432d-8eb7-abe07f02e9ec a=1
+[   28.17] kill w1 worker-bfce6f32685d-18 idle
+[   31.64] kill w1 worker-bfce6f32685d-20 holding ac635cf4-bf3b-4a58-a0c2-d6c17948d74c a=1
+[   35.11] kill w3 worker-bfce6f32685d-19 holding 4f01d0f5-a475-485e-b902-4c8bf73b3705 a=1
+[   38.61] kill w2 worker-bfce6f32685d-16 holding e0f5ef6f-b112-4049-ae09-e07054199d2a a=1
+[   42.68] kill w2 worker-bfce6f32685d-23 holding 25e79d61-1a92-4d95-9a40-37a55005326c a=1
+[   46.66] kill w0 worker-bfce6f32685d-7 holding e72de292-2ddb-46e8-965b-becea1a09e95 a=1
+[   51.62] kill w0 worker-bfce6f32685d-25 idle
+[   56.28] kill w3 worker-bfce6f32685d-22 holding 9b8d3401-2e5e-4b04-9a2f-669f58bd4d0d a=1
+[   59.73] kill w0 worker-bfce6f32685d-26 idle
+[   62.98] kill w3 worker-bfce6f32685d-27 idle
+[   66.73] kill w1 worker-bfce6f32685d-21 idle
+[   71.32] kill w2 worker-bfce6f32685d-24 idle
+[   74.84] kill w3 worker-bfce6f32685d-29 holding 25cac969-5d02-42e0-99f7-dbc2ce9a79e3 a=1
+[   78.55] kill w0 worker-bfce6f32685d-28 idle
+[   83.54] kill w3 worker-bfce6f32685d-32 holding 305b9458-1987-4e81-a931-ac35cc85b6b8 a=1
+[   87.97] kill w3 worker-bfce6f32685d-34 holding 15fb9312-d248-4d1e-9a3d-7bb945ec2ee1 a=1
+[   92.18] kill w3 worker-bfce6f32685d-35 holding 7df68c42-1b1e-41c3-837d-06e874f71305 a=1
+[   96.15] kill w1 worker-bfce6f32685d-30 idle
+[   99.83] kill w2 worker-bfce6f32685d-31 holding e92a889f-7a93-4337-b706-3e333b3a7646 a=1
+[  103.76] kill w3 worker-bfce6f32685d-36 idle
+[  107.37] kill w3 worker-bfce6f32685d-39 idle
+[  110.65] kill w3 worker-bfce6f32685d-40 idle
+[  114.47] kill w0 worker-bfce6f32685d-33 holding 69cbde25-2ec2-4852-841d-e4336701acb7 a=1
+[  119.06] kill w1 worker-bfce6f32685d-37 idle
+[  122.94] kill w1 worker-bfce6f32685d-43 holding 0df12b07-8953-4f9f-aa7a-91321dab5b33 a=1
+[  127.31] kill w1 worker-bfce6f32685d-44 idle
+[  131.70] kill w3 worker-bfce6f32685d-41 holding 79d358d2-0fcb-4e6b-9280-ebde5a41f6f2 a=1
+[  135.79] kill w2 worker-bfce6f32685d-38 idle
+[  139.42] kill w1 worker-bfce6f32685d-45 idle
+[  142.94] kill w0 worker-bfce6f32685d-42 holding ceded4f6-0733-4d67-9de9-e135542a2661 a=1
+[  146.02] kill w1 worker-bfce6f32685d-48 holding 59214744-051c-4c48-994d-70c8cc091e51 a=1
+[  150.80] kill w0 worker-bfce6f32685d-49 idle
+[  155.68] kill w3 worker-bfce6f32685d-46 holding 054135d8-7324-49ec-8155-6eb3e7bba956 a=1
+[  159.83] kill w0 worker-bfce6f32685d-51 idle
+[  164.50] kill w3 worker-bfce6f32685d-52 holding 693deca8-cb2a-4397-b17e-eaac904eb044 a=1
+[  168.19] kill w3 worker-bfce6f32685d-54 holding 81e1e9a1-2891-403f-802e-d361e488380b a=1
+[  172.70] kill w3 worker-bfce6f32685d-55 holding 5a481fe2-f3a2-45b2-98ed-da4989428480 a=1
+[  177.19] kill w0 worker-bfce6f32685d-53 holding 5cb91fad-1fb1-4edc-a770-fb725e7a760a a=1
+[  182.01] kill w0 worker-bfce6f32685d-57 holding 35591b95-b841-4164-b2ed-6410f29fb0a7 a=1
+[  185.16] kill w2 worker-bfce6f32685d-47 idle
+[  188.64] kill w2 worker-bfce6f32685d-59 holding 1272f343-894a-4a51-afa7-7eb700bcc4ff a=1
+[  192.49] kill w0 worker-bfce6f32685d-58 holding 05602596-1854-4db8-b861-f052fd51ec0d a=1
+[  196.57] kill w3 worker-bfce6f32685d-56 idle
+[  200.48] kill w0 worker-bfce6f32685d-61 holding cab79835-15ae-4058-9ac7-8f85d79559cf a=1
+[  203.94] kill w2 worker-bfce6f32685d-60 holding 573f6426-1322-41a5-b5c7-c09e52b7bb84 a=1
+[  208.37] kill w2 worker-bfce6f32685d-64 idle
+[  213.31] kill w2 worker-bfce6f32685d-65 holding b260fe9f-5581-4216-9e49-2d5792e6ff66 a=1
+[  217.85] kill w1 worker-bfce6f32685d-50 holding 8687fe07-20dd-4bc2-ac14-8e24fb7e0bfc a=1
+[  221.07] kill w2 worker-bfce6f32685d-66 idle
+[  225.25] kill w3 worker-bfce6f32685d-62 holding 449fac71-1ac0-4e35-820f-365079939110 a=1
+[  228.76] kill w3 worker-bfce6f32685d-69 holding 1f049068-0ac3-48e6-a461-4de9759d9332 a=1
+[  232.87] kill w1 worker-bfce6f32685d-67 holding ebcba8cb-7d25-4e34-a9d2-008e5799b213 a=1
+[  237.72] kill w1 worker-bfce6f32685d-71 holding 2f5a155f-5fcd-40ea-865e-63a5c811036d a=1
+[  241.94] kill w0 worker-bfce6f32685d-63 holding af27ef65-d9ff-42e0-bb08-98bf664eb0a0 a=1
+[  245.98] kill w3 worker-bfce6f32685d-70 holding f7f8e470-fb1c-4ae2-a899-b4b68fff953c a=1
+[  250.58] kill w1 worker-bfce6f32685d-72 holding a32baf5d-d250-4095-8df1-99b1df8390b5 a=1
+[  253.80] kill w2 worker-bfce6f32685d-68 holding 2bf929eb-383b-4794-9025-b439ee7d9f40 a=1
+[  257.28] kill w0 worker-bfce6f32685d-73 holding f02466d7-463c-4749-a370-b0254afd1597 a=1
+[  261.55] kill w2 worker-bfce6f32685d-76 holding f60a39e5-b2dd-4870-bcdc-424802dc957d a=1
+[  264.57] kill w3 worker-bfce6f32685d-74 holding 381a2c4b-a53a-4afd-b891-a4d9704f1029 a=1
+[  269.09] kill w3 worker-bfce6f32685d-79 holding 24e6e88e-b22c-48d9-8cc4-2f2ec8ea2972 a=1
+[  272.37] kill w3 worker-bfce6f32685d-80 holding ce1a63ba-7e09-433b-9ab8-459cdb46037d a=1
+[  277.02] kill w1 worker-bfce6f32685d-75 holding 8bd39e29-21c9-41b5-98f4-d6e1a8b4b57d a=1
+[  281.13] kill w3 worker-bfce6f32685d-81 holding 4002cbbf-e302-42bd-aa9f-f6a31536611d a=1
+[  284.94] kill w3 worker-bfce6f32685d-83 holding b0b31b15-f409-429e-9437-93a695d1ecfb a=1
+[  288.65] kill w0 worker-bfce6f32685d-77 idle
+[  292.90] kill w1 worker-bfce6f32685d-82 holding 70104ab5-e59d-4a73-8963-251b3be08511 a=1
+[  297.44] kill w0 worker-bfce6f32685d-85 holding 9a0a2c4e-4dbb-40e3-9bee-07786078d435 a=1
+[  300.00] load done: 30000 requests, 74 kills
+[  300.52] drain: 0.5 s after the load

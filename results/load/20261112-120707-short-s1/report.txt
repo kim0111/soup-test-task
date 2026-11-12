@@ -1,0 +1,34 @@
+run 20261112-120707-short-s1  verdict PASS  (verdict (L1))
+  C1 PASS same code as the chaos matrix: 30c76023c67a
+  C2 PASS error rate < 0.1 %: 0/29998 = 0.0000%
+  C3 PASS p99 < 200 ms on every endpoint: {'create': 19.0, 'get': 17.5, 'list': 18.8, 'cancel': 17.7}
+  C4 PASS queued ≤ 100 after warm-up, drained ≤ 60 s: max queued 6, drain 0.5 s
+  C5 PASS invariants I1–I8 after the drain: PASS
+  V1 PASS ≥ 99 % sent within 50 ms of schedule: 99.99%
+  V2 PASS a kill hit a busy worker: 51
+  V3 PASS a job was re-executed: 41
+  create n=  6626 p50=4.7 ms p99=19.0 ms max=26.3 ms
+  get    n= 16353 p50=4.0 ms p99=17.5 ms max=33.9 ms
+  list   n=  2664 p50=4.5 ms p99=18.8 ms max=29.1 ms
+  cancel n=  1357 p50=4.0 ms p99=17.7 ms max=19.4 ms
+  summary: {'requests': 29998, 'skipped': 2, 'errors': 0, 'error_rate': 0.0, 'on_time': 0.9999333333333333, 'lag_p99_ms': 1.6, 'by_status': {'cancel 200': 300, 'cancel 409': 1206, 'create 200': 747, 'create 201': 6629, 'get 200': 18168, 'list 200': 2948}}
+  jobs_finished_per_s: 21.3
+  queued: {'max_after_warmup': 6, 'at_end_of_load': 0, 'slope_per_s': -0.0}
+  dead_tuples: {'max': 2374, 'at_end': 1957, 'live_at_end': 6642, 'autovacuums': 5, 'updates': 13266, 'hot_share': 0.0, 'heap_bytes': 1720320, 'total_bytes': 2777088}
+  final_status: {'succeeded': 6195, 'cancelled': 240, 'failed': 194}
+  kills: 74
+  kills_busy: 51
+  re_executions: 41
+  exhausted: 0
+  cancels_by_from: {'running': 166, 'queued': 74}
+  drain_s: 0.5
+  wall_s: 301.001
+  load_test_errors: 0
+  I1 PASS no lost job: 0 violations {'checked': 6629, 'exhausted': 0}
+  I2 PASS no duplicates: 0 violations {'keys': 6629}
+  I3 PASS none stuck: 0 violations 
+  I4 PASS at most one effect per job: 0 violations 
+  I5 PASS succeeded <=> exactly one effect: 0 violations 
+  I6 PASS effect attempt = final attempt: 0 violations 
+  I7 PASS cancel respected: 0 violations 
+  I8 PASS legal history, no double claim: 0 violations 

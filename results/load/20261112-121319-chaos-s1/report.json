@@ -1,0 +1,228 @@
+{
+  "run": "20261112-121319-chaos-s1",
+  "mix": "chaos",
+  "seed": 1,
+  "rps": 100,
+  "duration_s": 300.0,
+  "role": "capacity probe (L2), not a SHIP gate",
+  "workers": 4,
+  "kill_every_s": [
+    3.0,
+    5.0
+  ],
+  "api": "http://api:8000",
+  "commit": "fd8ea5f03cf3f6c6138ff8655bdbf1adb804ea9e",
+  "code": "30c76023c67a",
+  "isolation": "read committed",
+  "warmup_s": 30.0,
+  "timeout_s": 2.0,
+  "config": {
+    "lease_s": 5.0,
+    "heartbeat_s": 1.0,
+    "reap_s": 1.0,
+    "max_attempts": 5,
+    "api_pool_max": 20
+  },
+  "verdict": "FAIL",
+  "criteria": [
+    {
+      "id": "C1",
+      "name": "same code as the chaos matrix",
+      "ok": true,
+      "value": "30c76023c67a"
+    },
+    {
+      "id": "C2",
+      "name": "error rate < 0.1 %",
+      "ok": true,
+      "value": "0/29997 = 0.0000%"
+    },
+    {
+      "id": "C3",
+      "name": "p99 < 200 ms on every endpoint",
+      "ok": true,
+      "value": {
+        "create": 17.7,
+        "get": 17.1,
+        "list": 19.6,
+        "cancel": 16.9
+      }
+    },
+    {
+      "id": "C4",
+      "name": "queued \u2264 100 after warm-up, drained \u2264 60 s",
+      "ok": false,
+      "value": "max queued 1628, drain 122.7 s"
+    },
+    {
+      "id": "C5",
+      "name": "invariants I1\u2013I8 after the drain",
+      "ok": true,
+      "value": "PASS"
+    },
+    {
+      "id": "V1",
+      "name": "\u2265 99 % sent within 50 ms of schedule",
+      "ok": true,
+      "value": "99.99%"
+    },
+    {
+      "id": "V2",
+      "name": "a kill hit a busy worker",
+      "ok": true,
+      "value": 74
+    },
+    {
+      "id": "V3",
+      "name": "a job was re-executed",
+      "ok": true,
+      "value": 74
+    }
+  ],
+  "summary": {
+    "requests": 29997,
+    "skipped": 3,
+    "errors": 0,
+    "error_rate": 0.0,
+    "on_time": 0.9999,
+    "lag_p99_ms": 1.5,
+    "by_status": {
+      "cancel 200": 1543,
+      "cancel 409": 11,
+      "create 200": 767,
+      "create 201": 6681,
+      "get 200": 18068,
+      "list 200": 2927
+    },
+    "endpoints": {
+      "create": {
+        "n": 6705,
+        "p50_ms": 4.7,
+        "p99_ms": 17.7,
+        "max_ms": 26.3
+      },
+      "get": {
+        "n": 16250,
+        "p50_ms": 4.1,
+        "p99_ms": 17.1,
+        "max_ms": 29.6
+      },
+      "list": {
+        "n": 2640,
+        "p50_ms": 4.9,
+        "p99_ms": 19.6,
+        "max_ms": 31.3
+      },
+      "cancel": {
+        "n": 1405,
+        "p50_ms": 4.3,
+        "p99_ms": 16.9,
+        "max_ms": 27.8
+      }
+    }
+  },
+  "wall_s": 423.09,
+  "drained": true,
+  "drain_s": 122.7,
+  "jobs_finished_per_s": 12.3,
+  "queued": {
+    "max_after_warmup": 1621,
+    "at_end_of_load": 1621,
+    "slope_per_s": 5.376
+  },
+  "dead_tuples": {
+    "max": 1957,
+    "at_end": 1697,
+    "live_at_end": 6681,
+    "autovacuums": 7,
+    "updates": 13056,
+    "hot_share": 0.0,
+    "heap_bytes": 1622016,
+    "total_bytes": 2859008
+  },
+  "final_status": {
+    "cancelled": 1383,
+    "succeeded": 5150,
+    "failed": 148
+  },
+  "kills": 74,
+  "kills_busy": 74,
+  "re_executions": 74,
+  "exhausted": 0,
+  "cancels_by_from": {
+    "running": 3,
+    "queued": 1380
+  },
+  "load_test_errors": 0,
+  "invariants": [
+    {
+      "id": "I1",
+      "title": "no lost job",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {
+        "checked": 6681,
+        "exhausted": 0
+      }
+    },
+    {
+      "id": "I2",
+      "title": "no duplicates",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {
+        "keys": 6681
+      }
+    },
+    {
+      "id": "I3",
+      "title": "none stuck",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I4",
+      "title": "at most one effect per job",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I5",
+      "title": "succeeded <=> exactly one effect",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I6",
+      "title": "effect attempt = final attempt",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I7",
+      "title": "cancel respected",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I8",
+      "title": "legal history, no double claim",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    }
+  ]
+}

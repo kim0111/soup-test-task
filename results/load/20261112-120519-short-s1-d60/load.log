@@ -1,0 +1,18 @@
+[    0.12] header {"run": "20261112-120519-short-s1-d60", "mix": "short", "seed": 1, "rps": 100, "duration_s": 60.0, "role": "verdict (L1)", "workers": 4, "kill_every_s": [3.0, 5.0], "api": "http://api:8000", "commit": "fd8ea5f03cf3f6c6138ff8655bdbf1adb804ea9e", "code": "30c76023c67a", "isolation": "read committed", "warmup_s": 30.0, "timeout_s": 2.0, "config": {"lease_s": 5.0, "heartbeat_s": 1.0, "reap_s": 1.0, "max_attempts": 5, "api_pool_max": 20}}
+[    3.79] kill w3 worker-8f485a6defc3-10 holding faa16421-a7d2-4c2e-beb8-cdf0f88797c2 a=1
+[    7.07] kill w3 worker-8f485a6defc3-14 holding a54d8de8-6179-4dec-8190-7a9a7f6ab311 a=1
+[   11.65] kill w2 worker-8f485a6defc3-9 holding 787aebfb-0796-4b5d-9376-4b8c97ac6f97 a=1
+[   16.45] kill w3 worker-8f485a6defc3-15 holding 030d5821-f235-404e-8017-c7b5b3f4216e a=1
+[   20.56] kill w1 worker-8f485a6defc3-8 holding 57759711-f6e4-4979-aa62-1accbbcd79a5 a=1
+[   24.25] kill w3 worker-8f485a6defc3-17 holding 3fd4c506-1e7f-4fce-90be-70c6803f054f a=1
+[   28.17] kill w1 worker-8f485a6defc3-18 holding 4d125ee4-9450-48f7-a8fd-21f323172cb5 a=1
+[   31.64] kill w1 worker-8f485a6defc3-20 holding 8ba15339-bcf2-40cd-90a4-9e6208bc3f17 a=1
+[   35.11] kill w3 worker-8f485a6defc3-19 holding 7cb7fbb2-75da-4123-a085-66d27142e50d a=1
+[   38.61] kill w2 worker-8f485a6defc3-16 holding 3571690b-9b4f-4204-8f08-90ffce9134a6 a=1
+[   42.68] kill w2 worker-8f485a6defc3-23 idle
+[   46.66] kill w0 worker-8f485a6defc3-7 idle
+[   51.62] kill w0 worker-8f485a6defc3-25 holding 52b6c3f1-de07-4eb5-9323-db4dc72783c3 a=1
+[   56.28] kill w3 worker-8f485a6defc3-22 holding 9a6dc241-a319-4020-b082-526f1e17aa40 a=1
+[   59.73] kill w0 worker-8f485a6defc3-26 idle
+[   60.01] load done: 6000 requests, 15 kills
+[   62.02] drain: 2.0 s after the load
