@@ -155,3 +155,26 @@ Not run. This is arithmetic on measured inputs.
 
 The worker fleet itself is a sizing knob, not the wall. L2's ceiling matched the arithmetic, and
 10× load needs ~10× workers, which is what runs into point 2.
+
+## What surprised me / what still concerns me
+
+**Surprised.** Mostly by what the evidence can and can't see. Under M1 the fence hid the double
+claim. The second claimant re-read the locked row and got attempt 2, both ran, the older complete
+was rejected, and only the audit trail showed it (I8, 525 jobs, `20261112-103031-s1-M1`). Run Z,
+built to test the zombie fence, never reached complete. All 64 zombies stopped at their first
+heartbeat after `SIGCONT`: 58 were rejected by the fence, 6 found the job already done
+(`20261112-105615-s1-z`, `20261112-110215-s2-z`). So the complete fence rests on two SQL-level
+tests (`test_zombie_cannot_complete`, `TestComplete::test_stale_attempt_…`). Dropping only `status='running'` (M3) is enough for a zombie to
+complete a requeued job, because `attempt` hasn't moved yet. Kills landed between a commit and its
+log line, on both sides (`20261112-101436-s1`, `20261112-101954-s2`): the DB is the truth, not the
+log. And a duplicate is paid compute. M4 ran ~4,800 extra jobs (`20261112-104722-s1-M4`), which
+for training jobs means GPU hours.
+
+**Still concerns me.** The backlog is silent. In L2 the queue grew by 5.4 jobs/s to 1,628 while
+every new job still got a 201, with a create p50 of 4.7 ms (`20261112-121319-chaos-s1`). About 2.5 % of L1's requests fall in
+a 14–19 ms latency mode. GIL hand-offs are only my hypothesis, not verified. Provenance is partly
+manual: the code hash doesn't cover the api container, so I checked its image and `MUTATION` with
+`docker inspect`. And the hash depends on line endings, which the fresh-clone run
+`20261112-130632-s1-j1000` showed.
+And the failure modes I never tested: DB failover, half-open TCP, injected clock skew, and effects
+outside Postgres, where exactly-once becomes at-least-once.
