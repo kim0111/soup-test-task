@@ -1,0 +1,6 @@
+2026-11-12 09:33:28,504 worker-bcbf5a0d0020-41 connected
+2026-11-12 09:33:28,508 worker-bcbf5a0d0020-41 claimed job=69502bc6-c529-4e8c-b31f-67dd3f4d4d30 attempt=1
+2026-11-12 09:33:29,511 worker-bcbf5a0d0020-41 abandoned job=69502bc6-c529-4e8c-b31f-67dd3f4d4d30 attempt=1 reason=heartbeat_rejected
+2026-11-12 09:33:29,512 worker-bcbf5a0d0020-41 claimed job=8cfe27bb-3792-4461-a484-88d4724f0c96 attempt=1
+2026-11-12 09:33:29,671 worker-bcbf5a0d0020-41 succeeded job=8cfe27bb-3792-4461-a484-88d4724f0c96 attempt=1
+2026-11-12 09:33:29,672 worker-bcbf5a0d0020-41 claimed job=c5e790e9-6e9d-4e2e-a8ff-a0641438c425 attempt=1

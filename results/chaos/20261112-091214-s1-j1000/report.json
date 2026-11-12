@@ -1,0 +1,117 @@
+{
+  "run": "20261112-091214-s1-j1000",
+  "seed": 1,
+  "mutation": null,
+  "zombie": false,
+  "jobs": 1000,
+  "workers": 8,
+  "rate": 30.0,
+  "commit": "55f353df505e357afc00e11a90fc93a96d2ce155",
+  "isolation": "read committed",
+  "config": {
+    "lease_s": 5.0,
+    "heartbeat_s": 1.0,
+    "reap_s": 1.0,
+    "max_attempts": 5
+  },
+  "wall_s": 38.092,
+  "drained": true,
+  "drain_s": 0.0,
+  "requests": {
+    "cancel 200": 36,
+    "cancel 409": 64,
+    "create 200": 1008,
+    "create 201": 1000,
+    "create 409": 9
+  },
+  "final_status": {
+    "succeeded": 934,
+    "failed": 30,
+    "cancelled": 36
+  },
+  "kills": 19,
+  "kills_busy": 16,
+  "zombies": 0,
+  "zombies_holding_job": 0,
+  "zombie_chances": 0,
+  "re_executions": 7,
+  "exhausted": 0,
+  "cancels_by_from": {
+    "running": 34,
+    "queued": 2
+  },
+  "conflicts_409": 9,
+  "harness_errors": 0,
+  "invariants": [
+    {
+      "id": "I1",
+      "title": "no lost job",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {
+        "checked": 1000,
+        "exhausted": 0
+      }
+    },
+    {
+      "id": "I2",
+      "title": "no duplicates",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {
+        "keys": 1000
+      }
+    },
+    {
+      "id": "I3",
+      "title": "none stuck",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I4",
+      "title": "at most one effect per job",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I5",
+      "title": "succeeded <=> exactly one effect",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I6",
+      "title": "effect attempt = final attempt",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I7",
+      "title": "cancel respected",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    },
+    {
+      "id": "I8",
+      "title": "legal history, no double claim",
+      "ok": true,
+      "count": 0,
+      "examples": [],
+      "info": {}
+    }
+  ],
+  "verdict": "PASS"
+}

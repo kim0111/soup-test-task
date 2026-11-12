@@ -1,0 +1,33 @@
+run 20261112-091436-s3-z-j1000  verdict PASS
+  seed: 3
+  mutation: None
+  zombie: True
+  jobs: 1000
+  workers: 8
+  rate: 40.0
+  commit: 55f353df505e357afc00e11a90fc93a96d2ce155
+  isolation: read committed
+  config: {'lease_s': 5.0, 'heartbeat_s': 1.0, 'reap_s': 1.0, 'max_attempts': 5}
+  wall_s: 36.147
+  drained: True
+  drain_s: 4.0
+  requests: {'cancel 200': 53, 'cancel 409': 47, 'create 200': 982, 'create 201': 1000, 'create 409': 9}
+  final_status: {'succeeded': 919, 'cancelled': 53, 'failed': 28}
+  kills: 16
+  kills_busy: 13
+  zombies: 2
+  zombies_holding_job: 2
+  zombie_chances: 0
+  re_executions: 14
+  exhausted: 0
+  cancels_by_from: {'running': 33, 'queued': 20}
+  conflicts_409: 9
+  harness_errors: 0
+  I1 PASS no lost job: 0 violations {'checked': 1000, 'exhausted': 0}
+  I2 PASS no duplicates: 0 violations {'keys': 1000}
+  I3 PASS none stuck: 0 violations 
+  I4 PASS at most one effect per job: 0 violations 
+  I5 PASS succeeded <=> exactly one effect: 0 violations 
+  I6 PASS effect attempt = final attempt: 0 violations 
+  I7 PASS cancel respected: 0 violations 
+  I8 PASS legal history, no double claim: 0 violations 

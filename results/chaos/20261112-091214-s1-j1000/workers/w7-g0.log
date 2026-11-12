@@ -1,0 +1,12 @@
+2026-11-12 09:12:15,944 worker-7f9eee9397de-20 connected
+2026-11-12 09:12:15,948 worker-7f9eee9397de-20 claimed job=b1391b1a-8312-47fe-88d0-c6ebec15b39e attempt=1
+2026-11-12 09:12:16,045 worker-7f9eee9397de-20 succeeded job=b1391b1a-8312-47fe-88d0-c6ebec15b39e attempt=1
+2026-11-12 09:12:16,046 worker-7f9eee9397de-20 claimed job=0fc456f2-ee0e-422b-9016-06f3ad3e7ff3 attempt=1
+2026-11-12 09:12:16,240 worker-7f9eee9397de-20 succeeded job=0fc456f2-ee0e-422b-9016-06f3ad3e7ff3 attempt=1
+2026-11-12 09:12:16,341 worker-7f9eee9397de-20 claimed job=4adf3f3c-f78b-4ea5-858c-d55d813d27f4 attempt=1
+2026-11-12 09:12:16,391 worker-7f9eee9397de-20 succeeded job=4adf3f3c-f78b-4ea5-858c-d55d813d27f4 attempt=1
+2026-11-12 09:12:16,392 worker-7f9eee9397de-20 claimed job=4f2401be-b1e0-4b66-87a2-85acea10f7b9 attempt=1
+2026-11-12 09:12:16,489 worker-7f9eee9397de-20 succeeded job=4f2401be-b1e0-4b66-87a2-85acea10f7b9 attempt=1
+2026-11-12 09:12:16,490 worker-7f9eee9397de-20 claimed job=1069d000-60e4-455a-9c0d-f9244a1eaaf8 attempt=1
+2026-11-12 09:12:17,493 worker-7f9eee9397de-20 abandoned job=1069d000-60e4-455a-9c0d-f9244a1eaaf8 attempt=1 reason=heartbeat_rejected
+2026-11-12 09:12:17,494 worker-7f9eee9397de-20 claimed job=0a931e8f-3fe7-47eb-8aa0-f1daa89327d3 attempt=1

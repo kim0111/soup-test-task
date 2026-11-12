@@ -1,0 +1,22 @@
+[    0.06] header {"run": "20261112-093356-s8-j1000", "seed": 8, "mutation": null, "zombie": false, "jobs": 1000, "workers": 8, "rate": 40.0, "commit": "55f353df505e357afc00e11a90fc93a96d2ce155", "code": "92e74e49e3e3", "isolation": "read committed", "config": {"lease_s": 5.0, "heartbeat_s": 1.0, "reap_s": 1.0, "max_attempts": 5}}
+[    1.98] kill w6 worker-57a9b6f17510-19 idle
+[    4.13] kill w0 worker-57a9b6f17510-13 holding afe96e14-71f3-40de-a3d0-fc100f3873ba a=1
+[    6.44] kill w4 worker-57a9b6f17510-17 holding ea911adb-bb4a-4cc0-942a-4aeb3485a2cd a=1
+[    8.71] kill w6 worker-57a9b6f17510-32 holding 67adcf63-c688-479a-927b-4df19b86c356 a=1
+[   10.70] kill w4 worker-57a9b6f17510-35 holding afe96e14-71f3-40de-a3d0-fc100f3873ba a=2
+[   12.09] CRASH: KeyboardInterrupt()
+[   12.10] Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 666, in main
+    return run.execute()
+           ^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 518, in execute
+    t.join()
+  File "/usr/local/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/usr/local/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 649, in interrupted
+    raise KeyboardInterrupt
+KeyboardInterrupt
+

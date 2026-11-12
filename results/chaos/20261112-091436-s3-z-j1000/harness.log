@@ -1,0 +1,25 @@
+[    0.03] header {"run": "20261112-091436-s3-z-j1000", "seed": 3, "mutation": null, "zombie": true, "jobs": 1000, "workers": 8, "rate": 40.0, "commit": "55f353df505e357afc00e11a90fc93a96d2ce155", "isolation": "read committed", "config": {"lease_s": 5.0, "heartbeat_s": 1.0, "reap_s": 1.0, "max_attempts": 5}}
+[    1.86] kill w5 worker-2f8ddbf03b18-18 holding ca1b2f02-3519-45eb-9816-e6377850a6dc a=1
+[    3.75] kill w4 worker-2f8ddbf03b18-17 idle
+[    5.84] kill w5 worker-2f8ddbf03b18-32 holding 75c9abc2-a1ee-41f6-a117-c78a5dcf97c2 a=1
+[    7.43] kill w0 worker-2f8ddbf03b18-13 idle
+[    8.19] zombie: SIGSTOP w3 worker-2f8ddbf03b18-16 for 6.0s holding 3e2db08d-fcee-4afd-a989-79c7d5284a72 a=1
+[    9.31] kill w6 worker-2f8ddbf03b18-19 holding 9f2f0b9f-748a-4514-90ec-ed9c32243d25 a=1
+[   11.08] kill w7 worker-2f8ddbf03b18-20 holding 42b27323-71d6-4060-ad4e-7b525d0c3468 a=1
+[   12.70] kill w0 worker-2f8ddbf03b18-37 holding 69103578-512c-4334-9e0f-b544a10f1dd1 a=1
+[   14.23] zombie: SIGCONT w3, job now cancelled a=1
+[   15.07] kill w1 worker-2f8ddbf03b18-14 holding fb7945cc-ad49-4d36-bc23-d191aed7c9e6 a=1
+[   16.89] kill w6 worker-2f8ddbf03b18-39 holding 680e32a0-573f-484c-b070-e6091004e060 a=1
+[   18.62] kill w1 worker-2f8ddbf03b18-44 holding d94b12b8-9d69-495f-b275-712a92437cca a=1
+[   20.26] kill w7 worker-2f8ddbf03b18-40 holding cdbeb16f-2f29-485a-8186-d2f3fe7c2c39 a=1
+[   21.89] kill w4 worker-2f8ddbf03b18-34 holding df99eea9-4d83-415e-841a-51ed776bd276 a=1
+[   24.21] kill w6 worker-2f8ddbf03b18-46 holding 174cde72-a595-4c52-9e86-ac793dfcb039 a=1
+[   25.19] zombie: SIGSTOP w3 worker-2f8ddbf03b18-16 for 6.4s holding ec722be6-1dc5-43cb-bd4e-9e11be171673 a=1
+[   26.46] kill w1 worker-2f8ddbf03b18-47 holding ff304acf-5ad6-42ec-b70f-5606fa084dc4 a=1
+[   28.16] kill w5 worker-2f8ddbf03b18-35 holding eade3726-3d68-4174-bf22-1e967c215838 a=1
+[   28.79] submitter done: 1991 POSTs for 1000 keys
+[   29.73] canceller done: 100 keys cancelled
+[   29.75] kill w0 worker-2f8ddbf03b18-41 idle
+[   31.59] zombie: SIGCONT w3, job now succeeded a=2
+[   31.74] chaos stopped: 16 kills, 2 zombies
+[   35.76] drain: done in 4.0s {'queued': 0, 'running': 0}

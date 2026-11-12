@@ -1,0 +1,8 @@
+2026-11-12 09:12:29,952 worker-7f9eee9397de-44 connected
+2026-11-12 09:12:29,959 worker-7f9eee9397de-44 claimed job=4d049d61-f635-40de-b67e-8e0197bd549f attempt=1
+2026-11-12 09:12:30,060 worker-7f9eee9397de-44 succeeded job=4d049d61-f635-40de-b67e-8e0197bd549f attempt=1
+2026-11-12 09:12:30,061 worker-7f9eee9397de-44 claimed job=555e7b97-bef0-4cbf-a3d1-c0506e3e4ef5 attempt=1
+2026-11-12 09:12:30,123 worker-7f9eee9397de-44 succeeded job=555e7b97-bef0-4cbf-a3d1-c0506e3e4ef5 attempt=1
+2026-11-12 09:12:30,124 worker-7f9eee9397de-44 claimed job=534f97d2-42e4-4fee-ba85-89e5461a4c98 attempt=1
+2026-11-12 09:12:30,195 worker-7f9eee9397de-44 failed job=534f97d2-42e4-4fee-ba85-89e5461a4c98 attempt=1
+2026-11-12 09:12:30,196 worker-7f9eee9397de-44 claimed job=55cde070-aa17-444e-b250-5176581c5987 attempt=1

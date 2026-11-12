@@ -1,0 +1,27 @@
+[    0.06] header {"run": "20261112-093421-s3-z-j1000", "seed": 3, "mutation": null, "zombie": true, "jobs": 1000, "workers": 8, "rate": 40.0, "commit": "55f353df505e357afc00e11a90fc93a96d2ce155", "code": "92e74e49e3e3", "isolation": "read committed", "config": {"lease_s": 5.0, "heartbeat_s": 1.0, "reap_s": 1.0, "max_attempts": 5}}
+[    1.87] kill w5 worker-9c8cd3fbb460-18 holding 27d3ddf0-8368-4c4b-9324-5e21d12b7fad a=1
+[    3.76] kill w4 worker-9c8cd3fbb460-17 holding cada0e08-d1cc-412b-abae-6e1734ca68e5 a=1
+[    5.85] kill w5 worker-9c8cd3fbb460-32 holding 8bc47a06-5a27-4851-9ce8-e5b797288464 a=1
+[    7.42] kill w0 worker-9c8cd3fbb460-13 holding 5525eac0-e669-4b23-bd95-cdddd38407cd a=1
+[    8.19] zombie: SIGSTOP w7 worker-9c8cd3fbb460-20 for 6.3s holding 81f7551c-5fef-40a8-83cd-61e8c694ff31 a=1
+[    9.30] kill w5 worker-9c8cd3fbb460-36 idle
+[   11.07] kill w6 worker-9c8cd3fbb460-19 holding 07050036-4dda-4fc2-9383-5d4427696efa a=1
+[   12.70] kill w0 worker-9c8cd3fbb460-38 holding a82e471a-b6dc-4a2e-820e-96bac84f358f a=1
+[   14.46] zombie: SIGCONT w7, job now running a=2
+[   15.06] kill w1 worker-9c8cd3fbb460-14 holding 10585baf-8ccc-479c-8e83-b01fdd817af1 a=1
+[   16.82] zombie: SIGSTOP w7 worker-9c8cd3fbb460-20 for 7.7s holding 5f545b24-bb7d-4bf0-ba62-336e8294facc a=1
+[   16.88] kill w3 worker-9c8cd3fbb460-16 holding f52d8c0c-1e39-481b-8477-76e31e62ad23 a=1
+[   18.62] kill w0 worker-9c8cd3fbb460-41 holding 62b2bca4-6830-4e38-8654-158510a23ab3 a=1
+[   20.26] kill w3 worker-9c8cd3fbb460-44 holding d097169f-2694-49cf-bf83-ead54d2acb31 a=1
+[   21.89] kill w2 worker-9c8cd3fbb460-15 holding d870e9ed-113d-4aaf-90b4-c831e7a15485 a=1
+[   24.21] kill w6 worker-9c8cd3fbb460-40 holding d8dbc5f9-5c45-4d61-aa8e-640c77320c14 a=1
+[   24.53] zombie: SIGCONT w7, job now running a=2
+[   26.45] zombie: SIGSTOP w6 worker-9c8cd3fbb460-51 for 6.8s holding a8e2258c-fb42-4a80-ad03-5591b8ea68c2 a=1
+[   26.50] kill w5 worker-9c8cd3fbb460-39 holding 4b485a54-9270-468a-a9c5-9a6faa7ec8cc a=1
+[   28.11] kill w1 worker-9c8cd3fbb460-43 holding 40008f7a-a989-427e-8f5c-ef76e3ede9a3 a=1
+[   28.79] submitter done: 1991 POSTs for 1000 keys
+[   29.73] canceller done: 100 keys cancelled
+[   30.37] kill w0 worker-9c8cd3fbb460-47 holding 61a2ef10-f353-4583-a00b-3af80b003904 a=1
+[   33.24] zombie: SIGCONT w6, job now running a=2
+[   33.24] chaos stopped: 16 kills, 3 zombies
+[   36.75] drain: done in 3.5s {'queued': 0, 'running': 0}

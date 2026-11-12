@@ -1,0 +1,24 @@
+2026-11-12 09:34:28,547 worker-9c8cd3fbb460-36 connected
+2026-11-12 09:34:28,550 worker-9c8cd3fbb460-36 claimed job=ad18e93d-345b-49f7-8a10-86e5c4976967 attempt=1
+2026-11-12 09:34:29,554 worker-9c8cd3fbb460-36 abandoned job=ad18e93d-345b-49f7-8a10-86e5c4976967 attempt=1 reason=heartbeat_rejected
+2026-11-12 09:34:29,557 worker-9c8cd3fbb460-36 reaped n=1
+2026-11-12 09:34:29,558 worker-9c8cd3fbb460-36 claimed job=27d3ddf0-8368-4c4b-9324-5e21d12b7fad attempt=2
+2026-11-12 09:34:29,659 worker-9c8cd3fbb460-36 succeeded job=27d3ddf0-8368-4c4b-9324-5e21d12b7fad attempt=2
+2026-11-12 09:34:29,663 worker-9c8cd3fbb460-36 claimed job=f6918b29-4a92-420c-b009-98aa15db7f6c attempt=1
+2026-11-12 09:34:29,750 worker-9c8cd3fbb460-36 succeeded job=f6918b29-4a92-420c-b009-98aa15db7f6c attempt=1
+2026-11-12 09:34:29,751 worker-9c8cd3fbb460-36 claimed job=94b2823c-74fb-447d-8f4b-3f2e734cf866 attempt=1
+2026-11-12 09:34:29,902 worker-9c8cd3fbb460-36 succeeded job=94b2823c-74fb-447d-8f4b-3f2e734cf866 attempt=1
+2026-11-12 09:34:29,902 worker-9c8cd3fbb460-36 claimed job=8b57cb38-6efc-487e-8439-631654443f35 attempt=1
+2026-11-12 09:34:29,930 worker-9c8cd3fbb460-36 succeeded job=8b57cb38-6efc-487e-8439-631654443f35 attempt=1
+2026-11-12 09:34:29,931 worker-9c8cd3fbb460-36 claimed job=b6b478bd-41a0-4f27-afdd-16b54ae24d83 attempt=1
+2026-11-12 09:34:30,038 worker-9c8cd3fbb460-36 succeeded job=b6b478bd-41a0-4f27-afdd-16b54ae24d83 attempt=1
+2026-11-12 09:34:30,039 worker-9c8cd3fbb460-36 claimed job=7a53b70f-f6b4-438b-a7fa-c6977a7348e5 attempt=1
+2026-11-12 09:34:30,068 worker-9c8cd3fbb460-36 succeeded job=7a53b70f-f6b4-438b-a7fa-c6977a7348e5 attempt=1
+2026-11-12 09:34:30,068 worker-9c8cd3fbb460-36 claimed job=518c821e-e2e7-4a00-94e5-6ede8d15f814 attempt=1
+2026-11-12 09:34:30,232 worker-9c8cd3fbb460-36 succeeded job=518c821e-e2e7-4a00-94e5-6ede8d15f814 attempt=1
+2026-11-12 09:34:30,233 worker-9c8cd3fbb460-36 claimed job=ca3d3fad-4587-4946-a114-8157f958e145 attempt=1
+2026-11-12 09:34:30,309 worker-9c8cd3fbb460-36 succeeded job=ca3d3fad-4587-4946-a114-8157f958e145 attempt=1
+2026-11-12 09:34:30,310 worker-9c8cd3fbb460-36 claimed job=11f326e4-acf2-45dc-80f0-08e0ce3ca92f attempt=1
+2026-11-12 09:34:31,314 worker-9c8cd3fbb460-36 abandoned job=11f326e4-acf2-45dc-80f0-08e0ce3ca92f attempt=1 reason=heartbeat_rejected
+2026-11-12 09:34:31,315 worker-9c8cd3fbb460-36 claimed job=08ce6719-0b6a-458d-a05a-0c9825670cae attempt=1
+2026-11-12 09:34:31,616 worker-9c8cd3fbb460-36 reaped n=1

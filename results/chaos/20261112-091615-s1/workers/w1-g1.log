@@ -1,0 +1,6 @@
+2026-11-12 09:16:40,200 worker-d0cdf30638e8-56 connected
+2026-11-12 09:16:40,204 worker-d0cdf30638e8-56 claimed job=67d79371-3ac0-476c-97be-f6a162675f7e attempt=1
+2026-11-12 09:16:40,385 worker-d0cdf30638e8-56 succeeded job=67d79371-3ac0-476c-97be-f6a162675f7e attempt=1
+2026-11-12 09:16:40,386 worker-d0cdf30638e8-56 claimed job=325261e9-4c3d-486c-a65a-dff212a011ca attempt=1
+2026-11-12 09:16:42,394 worker-d0cdf30638e8-56 abandoned job=325261e9-4c3d-486c-a65a-dff212a011ca attempt=1 reason=heartbeat_rejected
+2026-11-12 09:16:42,395 worker-d0cdf30638e8-56 claimed job=45e876c5-1f95-43ad-87bb-92ba8d33d3e6 attempt=1

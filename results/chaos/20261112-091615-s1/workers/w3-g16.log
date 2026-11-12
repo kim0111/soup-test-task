@@ -1,0 +1,3 @@
+2026-11-12 09:21:08,046 worker-d0cdf30638e8-258 connected
+2026-11-12 09:21:08,049 worker-d0cdf30638e8-258 reaped n=1
+2026-11-12 09:21:08,051 worker-d0cdf30638e8-258 claimed job=6a0b88a1-8c53-4ac3-b2ea-f58d7f851419 attempt=2

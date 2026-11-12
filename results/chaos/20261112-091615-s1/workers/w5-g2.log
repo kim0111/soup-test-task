@@ -1,0 +1,14 @@
+2026-11-12 09:16:36,153 worker-d0cdf30638e8-51 connected
+2026-11-12 09:16:36,157 worker-d0cdf30638e8-51 claimed job=1683c528-0e0a-4f53-831b-7f9631dec12b attempt=1
+2026-11-12 09:16:36,270 worker-d0cdf30638e8-51 succeeded job=1683c528-0e0a-4f53-831b-7f9631dec12b attempt=1
+2026-11-12 09:16:36,271 worker-d0cdf30638e8-51 claimed job=46e0c2d0-d53d-4e41-b434-313250f9b52b attempt=1
+2026-11-12 09:16:36,467 worker-d0cdf30638e8-51 succeeded job=46e0c2d0-d53d-4e41-b434-313250f9b52b attempt=1
+2026-11-12 09:16:36,468 worker-d0cdf30638e8-51 claimed job=e06d45d5-0669-43ae-b65e-98386e14935b attempt=1
+2026-11-12 09:16:36,519 worker-d0cdf30638e8-51 succeeded job=e06d45d5-0669-43ae-b65e-98386e14935b attempt=1
+2026-11-12 09:16:36,520 worker-d0cdf30638e8-51 claimed job=3949fa97-9def-4a8c-ae02-122fc2ebd084 attempt=1
+2026-11-12 09:16:36,699 worker-d0cdf30638e8-51 succeeded job=3949fa97-9def-4a8c-ae02-122fc2ebd084 attempt=1
+2026-11-12 09:16:36,700 worker-d0cdf30638e8-51 claimed job=478a221f-d5ca-4dc3-8097-daa2e3cf827e attempt=1
+2026-11-12 09:16:37,703 worker-d0cdf30638e8-51 abandoned job=478a221f-d5ca-4dc3-8097-daa2e3cf827e attempt=1 reason=heartbeat_rejected
+2026-11-12 09:16:37,706 worker-d0cdf30638e8-51 claimed job=35bd4300-0b27-41d6-b9a5-5045a3b0aaa9 attempt=1
+2026-11-12 09:16:37,838 worker-d0cdf30638e8-51 succeeded job=35bd4300-0b27-41d6-b9a5-5045a3b0aaa9 attempt=1
+2026-11-12 09:16:37,842 worker-d0cdf30638e8-51 claimed job=7c44f497-a0e1-4e3f-bc30-1901835eefcb attempt=1

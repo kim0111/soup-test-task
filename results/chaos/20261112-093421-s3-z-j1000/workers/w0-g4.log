@@ -1,0 +1,8 @@
+2026-11-12 09:34:53,063 worker-9c8cd3fbb460-54 connected
+2026-11-12 09:34:53,069 worker-9c8cd3fbb460-54 claimed job=b7a82f17-44a4-4331-81f0-bf8c34b542e7 attempt=1
+2026-11-12 09:34:53,186 worker-9c8cd3fbb460-54 succeeded job=b7a82f17-44a4-4331-81f0-bf8c34b542e7 attempt=1
+2026-11-12 09:34:53,187 worker-9c8cd3fbb460-54 claimed job=a90a90b4-9fb0-47d6-b0b1-7de8a5bc4421 attempt=1
+2026-11-12 09:34:53,274 worker-9c8cd3fbb460-54 succeeded job=a90a90b4-9fb0-47d6-b0b1-7de8a5bc4421 attempt=1
+2026-11-12 09:34:54,151 worker-9c8cd3fbb460-54 claimed job=a8e2258c-fb42-4a80-ad03-5591b8ea68c2 attempt=2
+2026-11-12 09:34:58,803 worker-9c8cd3fbb460-54 succeeded job=a8e2258c-fb42-4a80-ad03-5591b8ea68c2 attempt=2
+2026-11-12 09:34:59,255 worker-9c8cd3fbb460-54 stopped

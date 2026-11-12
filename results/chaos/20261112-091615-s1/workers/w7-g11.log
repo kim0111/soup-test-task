@@ -1,0 +1,20 @@
+2026-11-12 09:18:29,365 worker-d0cdf30638e8-147 connected
+2026-11-12 09:18:29,369 worker-d0cdf30638e8-147 claimed job=3ff8a95c-cfcc-43e1-891d-fbb1f4a9a6ec attempt=1
+2026-11-12 09:18:29,559 worker-d0cdf30638e8-147 succeeded job=3ff8a95c-cfcc-43e1-891d-fbb1f4a9a6ec attempt=1
+2026-11-12 09:18:29,562 worker-d0cdf30638e8-147 claimed job=237051d9-1278-4e4f-bf4f-388573588287 attempt=1
+2026-11-12 09:18:29,588 worker-d0cdf30638e8-147 succeeded job=237051d9-1278-4e4f-bf4f-388573588287 attempt=1
+2026-11-12 09:18:29,591 worker-d0cdf30638e8-147 claimed job=9f567543-73db-4d77-aad6-4ad9cde5f25c attempt=1
+2026-11-12 09:18:30,595 worker-d0cdf30638e8-147 abandoned job=9f567543-73db-4d77-aad6-4ad9cde5f25c attempt=1 reason=heartbeat_rejected
+2026-11-12 09:18:30,597 worker-d0cdf30638e8-147 claimed job=8eb0c22a-c0ce-47c2-8de1-1e3e1e735c3d attempt=1
+2026-11-12 09:18:30,744 worker-d0cdf30638e8-147 succeeded job=8eb0c22a-c0ce-47c2-8de1-1e3e1e735c3d attempt=1
+2026-11-12 09:18:30,748 worker-d0cdf30638e8-147 claimed job=599f735e-cc0f-4978-8974-347230f34b88 attempt=1
+2026-11-12 09:18:30,772 worker-d0cdf30638e8-147 succeeded job=599f735e-cc0f-4978-8974-347230f34b88 attempt=1
+2026-11-12 09:18:30,773 worker-d0cdf30638e8-147 claimed job=cbf6e8a1-af5c-4eca-a634-75eb33365067 attempt=1
+2026-11-12 09:18:30,945 worker-d0cdf30638e8-147 succeeded job=cbf6e8a1-af5c-4eca-a634-75eb33365067 attempt=1
+2026-11-12 09:18:30,946 worker-d0cdf30638e8-147 claimed job=85b09122-684f-481e-91af-4b07e30a5207 attempt=1
+2026-11-12 09:18:31,118 worker-d0cdf30638e8-147 succeeded job=85b09122-684f-481e-91af-4b07e30a5207 attempt=1
+2026-11-12 09:18:31,119 worker-d0cdf30638e8-147 claimed job=f64857f4-6907-48fb-8506-49c66677ea53 attempt=1
+2026-11-12 09:18:31,197 worker-d0cdf30638e8-147 succeeded job=f64857f4-6907-48fb-8506-49c66677ea53 attempt=1
+2026-11-12 09:18:31,198 worker-d0cdf30638e8-147 claimed job=67c75b93-999a-4868-a6f2-59efd65cbc41 attempt=1
+2026-11-12 09:18:31,361 worker-d0cdf30638e8-147 succeeded job=67c75b93-999a-4868-a6f2-59efd65cbc41 attempt=1
+2026-11-12 09:18:31,361 worker-d0cdf30638e8-147 claimed job=5621adf0-df0b-466e-8af4-4222ebb654f7 attempt=1

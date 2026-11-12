@@ -1,0 +1,13 @@
+2026-11-12 09:17:58,966 worker-d0cdf30638e8-124 connected
+2026-11-12 09:17:58,970 worker-d0cdf30638e8-124 claimed job=797d13a0-3a51-4edc-88b4-3804fc48c564 attempt=1
+2026-11-12 09:17:59,165 worker-d0cdf30638e8-124 succeeded job=797d13a0-3a51-4edc-88b4-3804fc48c564 attempt=1
+2026-11-12 09:17:59,166 worker-d0cdf30638e8-124 claimed job=81225cb2-42e1-46e3-8fd3-89f58a65c70f attempt=1
+2026-11-12 09:17:59,291 worker-d0cdf30638e8-124 succeeded job=81225cb2-42e1-46e3-8fd3-89f58a65c70f attempt=1
+2026-11-12 09:17:59,292 worker-d0cdf30638e8-124 claimed job=2f0e5ca7-ba0f-4dda-81f2-f2ec166021dc attempt=1
+2026-11-12 09:17:59,491 worker-d0cdf30638e8-124 succeeded job=2f0e5ca7-ba0f-4dda-81f2-f2ec166021dc attempt=1
+2026-11-12 09:17:59,492 worker-d0cdf30638e8-124 claimed job=a968c1fc-c3a2-49fc-8ca9-39e3d1be66b7 attempt=1
+2026-11-12 09:17:59,664 worker-d0cdf30638e8-124 succeeded job=a968c1fc-c3a2-49fc-8ca9-39e3d1be66b7 attempt=1
+2026-11-12 09:17:59,666 worker-d0cdf30638e8-124 claimed job=f17b93e0-344f-4ff8-8d7c-3e8d232d89ea attempt=1
+2026-11-12 09:17:59,779 worker-d0cdf30638e8-124 succeeded job=f17b93e0-344f-4ff8-8d7c-3e8d232d89ea attempt=1
+2026-11-12 09:17:59,780 worker-d0cdf30638e8-124 claimed job=f4c6b2ee-cbf5-4673-a9e7-2a7b479872e3 attempt=1
+2026-11-12 09:18:01,992 worker-d0cdf30638e8-124 reaped n=1

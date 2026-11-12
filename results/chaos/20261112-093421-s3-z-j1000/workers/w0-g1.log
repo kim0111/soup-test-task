@@ -1,0 +1,32 @@
+2026-11-12 09:34:30,129 worker-9c8cd3fbb460-38 connected
+2026-11-12 09:34:30,134 worker-9c8cd3fbb460-38 claimed job=9ba07c4b-a007-4e97-b04a-17842056da94 attempt=1
+2026-11-12 09:34:30,193 worker-9c8cd3fbb460-38 succeeded job=9ba07c4b-a007-4e97-b04a-17842056da94 attempt=1
+2026-11-12 09:34:30,194 worker-9c8cd3fbb460-38 claimed job=45a455fd-d3aa-43c3-a26c-58b9bcf96b8a attempt=1
+2026-11-12 09:34:30,273 worker-9c8cd3fbb460-38 succeeded job=45a455fd-d3aa-43c3-a26c-58b9bcf96b8a attempt=1
+2026-11-12 09:34:30,274 worker-9c8cd3fbb460-38 claimed job=a38d95f4-084f-4466-9b81-ad6f9c49b019 attempt=1
+2026-11-12 09:34:30,377 worker-9c8cd3fbb460-38 succeeded job=a38d95f4-084f-4466-9b81-ad6f9c49b019 attempt=1
+2026-11-12 09:34:30,379 worker-9c8cd3fbb460-38 claimed job=b1a9de6d-b62d-45f3-82a6-7e5951bd234c attempt=1
+2026-11-12 09:34:30,517 worker-9c8cd3fbb460-38 succeeded job=b1a9de6d-b62d-45f3-82a6-7e5951bd234c attempt=1
+2026-11-12 09:34:30,518 worker-9c8cd3fbb460-38 claimed job=b602178c-74c9-49d5-b07d-b85198e1940a attempt=1
+2026-11-12 09:34:30,709 worker-9c8cd3fbb460-38 succeeded job=b602178c-74c9-49d5-b07d-b85198e1940a attempt=1
+2026-11-12 09:34:30,710 worker-9c8cd3fbb460-38 claimed job=028cb3ee-6877-4d88-b9d6-faaa01871419 attempt=1
+2026-11-12 09:34:30,806 worker-9c8cd3fbb460-38 succeeded job=028cb3ee-6877-4d88-b9d6-faaa01871419 attempt=1
+2026-11-12 09:34:30,807 worker-9c8cd3fbb460-38 claimed job=5d7f7e7b-c31e-4587-ad6a-bf4768f6547d attempt=1
+2026-11-12 09:34:30,904 worker-9c8cd3fbb460-38 succeeded job=5d7f7e7b-c31e-4587-ad6a-bf4768f6547d attempt=1
+2026-11-12 09:34:30,905 worker-9c8cd3fbb460-38 claimed job=61add814-0328-49d5-ae6d-59d8cd37162a attempt=1
+2026-11-12 09:34:30,987 worker-9c8cd3fbb460-38 succeeded job=61add814-0328-49d5-ae6d-59d8cd37162a attempt=1
+2026-11-12 09:34:30,991 worker-9c8cd3fbb460-38 claimed job=af3f2de4-b084-4700-aa71-b2ce8c630c77 attempt=1
+2026-11-12 09:34:31,996 worker-9c8cd3fbb460-38 abandoned job=af3f2de4-b084-4700-aa71-b2ce8c630c77 attempt=1 reason=heartbeat_rejected
+2026-11-12 09:34:31,997 worker-9c8cd3fbb460-38 claimed job=5ab206f5-878d-4268-9870-611599705f9a attempt=1
+2026-11-12 09:34:34,450 worker-9c8cd3fbb460-38 succeeded job=5ab206f5-878d-4268-9870-611599705f9a attempt=1
+2026-11-12 09:34:34,452 worker-9c8cd3fbb460-38 claimed job=babdc35e-6970-4cd5-8700-041a03f3a156 attempt=1
+2026-11-12 09:34:34,498 worker-9c8cd3fbb460-38 failed job=babdc35e-6970-4cd5-8700-041a03f3a156 attempt=1
+2026-11-12 09:34:34,499 worker-9c8cd3fbb460-38 claimed job=85de641f-bcd1-427c-9720-a6a862078bb7 attempt=1
+2026-11-12 09:34:34,634 worker-9c8cd3fbb460-38 succeeded job=85de641f-bcd1-427c-9720-a6a862078bb7 attempt=1
+2026-11-12 09:34:34,634 worker-9c8cd3fbb460-38 claimed job=500d1c2a-e6e1-4c96-9b93-ced4c174d3ec attempt=1
+2026-11-12 09:34:34,766 worker-9c8cd3fbb460-38 succeeded job=500d1c2a-e6e1-4c96-9b93-ced4c174d3ec attempt=1
+2026-11-12 09:34:34,766 worker-9c8cd3fbb460-38 claimed job=a7a28ec9-19d0-4189-8db0-c72604570250 attempt=1
+2026-11-12 09:34:34,937 worker-9c8cd3fbb460-38 succeeded job=a7a28ec9-19d0-4189-8db0-c72604570250 attempt=1
+2026-11-12 09:34:34,938 worker-9c8cd3fbb460-38 claimed job=401a5a77-e0f1-4e3f-99cf-d26f84f219f2 attempt=1
+2026-11-12 09:34:35,114 worker-9c8cd3fbb460-38 succeeded job=401a5a77-e0f1-4e3f-99cf-d26f84f219f2 attempt=1
+2026-11-12 09:34:35,114 worker-9c8cd3fbb460-38 claimed job=a82e471a-b6dc-4a2e-820e-96bac84f358f attempt=1

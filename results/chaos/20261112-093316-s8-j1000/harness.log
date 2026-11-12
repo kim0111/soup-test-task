@@ -1,0 +1,219 @@
+[    0.05] header {"run": "20261112-093316-s8-j1000", "seed": 8, "mutation": null, "zombie": false, "jobs": 1000, "workers": 8, "rate": 40.0, "commit": "55f353df505e357afc00e11a90fc93a96d2ce155", "code": "8ed6bd1aaf8f", "isolation": "read committed", "config": {"lease_s": 5.0, "heartbeat_s": 1.0, "reap_s": 1.0, "max_attempts": 5}}
+[    1.99] kill w6 worker-bcbf5a0d0020-19 holding 553e448d-2c6a-41be-bf69-1c3dbb9b4782 a=1
+[    4.14] kill w0 worker-bcbf5a0d0020-13 holding b87bab6a-8447-4eb4-8861-6e4b19d145f7 a=1
+[    6.45] kill w4 worker-bcbf5a0d0020-17 holding da509c32-8237-4d14-a7e4-f174c6fdfea6 a=1
+[    8.72] kill w6 worker-bcbf5a0d0020-32 holding 9533983d-a73d-421b-b3ab-7d7f942cc871 a=1
+[   10.71] kill w4 worker-bcbf5a0d0020-38 holding 7a3877f9-3a8f-4ffb-a061-73309fbbc1f4 a=1
+[   12.30] CRASH: KeyboardInterrupt()
+[   12.31] Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 666, in main
+    return run.execute()
+           ^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 518, in execute
+    t.join()
+  File "/usr/local/lib/python3.12/threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "/usr/local/lib/python3.12/threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 649, in interrupted
+    raise KeyboardInterrupt
+KeyboardInterrupt
+
+[   12.32] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.44] HARNESS ERROR in canceller:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 400, in canceller
+    pool.submit(self.guarded, "cancel", self.cancel, *target)
+  File "/usr/local/lib/python3.12/concurrent/futures/thread.py", line 171, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+
+[   12.68] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.70] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.70] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.70] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.73] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.73] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.75] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.78] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.78] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+[   12.78] HARNESS ERROR in create:
+Traceback (most recent call last):
+  File "/app/chaos/harness.py", line 238, in guarded
+    fn(*a)
+  File "/app/chaos/harness.py", line 343, in create
+    status, body = self.call("create", "POST", "/jobs", {"key": s.key, "body": s.body, "id": None},
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/chaos/harness.py", line 328, in call
+    r = self.http.request(method, url, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
