@@ -1,0 +1,36 @@
+run 20261112-103608-s1-z-M2  verdict FAIL
+  seed: 1
+  mutation: M2
+  zombie: True
+  jobs: 10000
+  workers: 8
+  rate: 40.0
+  commit: b1d4a56a0f967e5f246855a8f56a9e85e50da8c3
+  code: 30c76023c67a
+  isolation: read committed
+  config: {'lease_s': 5.0, 'heartbeat_s': 1.0, 'reap_s': 1.0, 'max_attempts': 5}
+  wall_s: 328.437
+  drained: True
+  drain_s: 8.5
+  requests: {'cancel 200': 920, 'cancel 409': 80, 'create 200': 10038, 'create 201': 10000, 'create 409': 113}
+  final_status: {'succeeded': 8811, 'failed': 269, 'cancelled': 920}
+  kills: 159
+  kills_busy: 149
+  zombies: 32
+  zombies_holding_job: 32
+  zombie_chances: 27
+  re_executions: 159
+  exhausted: 0
+  cancels_by_from: {'running': 293, 'queued': 627}
+  conflicts_409: 113
+  harness_errors: 0
+  unexpected_answers: []
+  coverage_gaps: []
+  I1 PASS no lost job: 0 violations {'checked': 10000, 'exhausted': 0}
+  I2 PASS no duplicates: 0 violations {'keys': 10000}
+  I3 PASS none stuck: 0 violations 
+  I4 PASS at most one effect per job: 0 violations 
+  I5 PASS succeeded <=> exactly one effect: 0 violations 
+  I6 FAIL effect attempt = final attempt: 26 violations e.g. 0421a866-6d0f-4d8a-ab39-419f31edd93a, 0f0c9dd7-2cbf-459c-9f18-3f69de2fc927, 26adb3f8-58e2-4930-b85d-b7961af15287, 322036d5-4992-41da-8617-bb5c0efb579a, 38a516a7-1cdb-4cd9-aac8-ec9d01c63445 
+  I7 PASS cancel respected: 0 violations 
+  I8 PASS legal history, no double claim: 0 violations 
