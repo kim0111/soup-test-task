@@ -3,6 +3,8 @@ x-app: &app
   image: soup-queue
   environment:
     DATABASE_URL: postgresql://${POSTGRES_USER:?copy .env.example to .env}:${POSTGRES_PASSWORD:?copy .env.example to .env}@db:5432/${POSTGRES_DB:?copy .env.example to .env}
+    # Deliberate bug (SPEC §8.4) for api, workers and chaos; empty = correct code.
+    MUTATION: ${MUTATION:-}
   depends_on:
     db:
       condition: service_healthy

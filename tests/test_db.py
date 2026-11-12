@@ -37,3 +37,32 @@ def test_pool_sessions_get_the_role_settings(db_url):
         assert show(c, "statement_timeout") == "5s"
         assert show(c, "lock_timeout") == "2s"
         assert show(c, "application_name") == "api-pool"
+
+
+# --- schema switch for mutation M4 (SPEC §8.4) ----------------------------------------------------
+
+def has_unique_key(conn) -> bool:
+    return conn.execute(
+        "SELECT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'jobs_idempotency_key_key')"
+        " AS x"
+    ).fetchone()["x"]
+
+
+def test_schema_sync_drops_unique_key_for_m4_and_restores_it_after(conn, monkeypatch):
+    """M4 needs the constraint gone; the next correct run (same compose DB, chaos preflight) must
+    get it back, or every create fails on ON CONFLICT and the run is wasted."""
+    from app import config, repo
+
+    try:
+        monkeypatch.setattr(config, "MUTATION", "M4")
+        repo.sync_schema_with_mutation(conn)
+        assert not has_unique_key(conn)
+
+        monkeypatch.setattr(config, "MUTATION", "")
+        repo.sync_schema_with_mutation(conn)
+        assert has_unique_key(conn)
+        repo.sync_schema_with_mutation(conn)  # already there: a no-op, not an error
+        assert has_unique_key(conn)
+    finally:
+        monkeypatch.undo()
+        repo.sync_schema_with_mutation(conn)  # back to what this session's MUTATION expects

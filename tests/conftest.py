@@ -9,7 +9,7 @@ import pytest
 from psycopg import sql
 from psycopg.conninfo import conninfo_to_dict, make_conninfo
 
-from app import db
+from app import db, repo
 
 MIGRATIONS = Path(__file__).resolve().parent.parent / "migrations"
 BASE_URL = os.environ["DATABASE_URL"]
@@ -26,6 +26,7 @@ def db_url() -> str:
     with psycopg.connect(TEST_URL, autocommit=True) as conn:
         for migration in sorted(MIGRATIONS.glob("*.sql")):
             conn.execute(migration.read_text(encoding="utf-8"))
+        repo.sync_schema_with_mutation(conn)  # MUTATION=M4 only
     return TEST_URL
 
 

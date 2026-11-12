@@ -13,10 +13,9 @@ The goal is to prove it **survives production** (crashes, zombies, races), not j
 - `Docs/PLAN.md` (build order, phase checklist) and `Docs/NOTES.md` (journal used later for `AI_USAGE.md`) are
   **gitignored, local only**. Check PLAN.md for the current phase; record surprises, rejected/accepted AI
   suggestions and failed runs in NOTES.md.
-- Done (PLAN Phases 0–5): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API, worker loop
-  (`app/worker.py`: `run_job`, `run`, `Timings`; tests in `tests/test_worker.py`).
-  Not built yet (per SPEC §11): the `MUTATION` branches in `repo.py`, `chaos/`, `loadtest/`, `results/`,
-  and the remaining docs.
+- Done (PLAN Phases 0–6): schema, `repo.py` SQL, per-transition tests, SQL race tests, HTTP API, worker loop
+  (`app/worker.py`: `run_job`, `run`, `Timings`; tests in `tests/test_worker.py`), `MUTATION` M1–M4 switches.
+  Not built yet (per SPEC §11): `chaos/`, `loadtest/`, `results/`, and the remaining docs.
 
 
 ## Commands
@@ -95,5 +94,6 @@ Schema details that are deliberate, not oversights (`migrations/001_init.sql`):
 - A test that passes before the code exists is a finding: prove each guard by breaking it by hand and watching
   the named test fail with an assertion (not an error), then revert.
 - Mutations (SPEC §8.4) are implemented as one `if config.MUTATION == "Mx"` per query in `repo.py`; each must
-  make its named test and chaos invariant fail. A mutation that isn't caught is a harness finding, reported as is.
+  make its named test and chaos invariant fail. M4 also needs `repo.sync_schema_with_mutation(conn)` (drops the
+  unique constraint under M4, restores it otherwise; called by `conftest.py` and the chaos preflight). A mutation that isn't caught is a harness finding, reported as is.
 - Never edit chaos/load results; every run, including failed ones, goes into `results/chaos/INDEX.md`.
